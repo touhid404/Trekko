@@ -8,6 +8,7 @@
     "dev": "tsx watch src/server.ts",
     "build:tsup": "tsup",
     "seed:admin": "tsx src/seedAdmin.ts",
+    "seed": "tsx src/seed.ts",
     "migrate": "prisma migrate dev",
     "stripe:webhook": "stripe listen --forward-to localhost:5000/webhook",
     "generate": "prisma generate",
