@@ -1,0 +1,45 @@
+// Enums for the application
+
+enum MemberRole {
+    ADMIN
+    MEMBER
+}
+
+enum MemberStatus {
+    ACTIVE
+    INACTIVE
+}
+
+enum MemberGender {
+    MALE
+    FEMALE
+}
+
+enum VoteType {
+    UP
+    DOWN
+}
+
+enum GuideStatus {
+    DRAFT
+    UNDER_REVIEW
+    APPROVED
+    REJECTED
+}
+
+enum MediaType {
+    IMAGE
+    VIDEO
+    PDF
+}
+
+enum GuideReviewStatus {
+    APPROVED
+    REJECTED
+}
+
+enum PaymentStatus {
+    PENDING
+    COMPLETED
+    FAILED
+}
