@@ -118,6 +118,7 @@ export class QueryBuilder<
       "sortOrder",
       "fields",
       "include",
+      "includes",
     ];
 
     const filterParams: Record<string, unknown> = {};
@@ -426,12 +427,35 @@ export class QueryBuilder<
   }
 
   async execute(): Promise<IQueryResult<T>> {
+    // Sanitize query: remove empty include/select to prevent Prisma errors
+    const findManyArgs = { ...this.query };
+    if (
+      findManyArgs.include &&
+      typeof findManyArgs.include === "object" &&
+      Object.keys(findManyArgs.include as Record<string, unknown>).length === 0
+    ) {
+      delete findManyArgs.include;
+    }
+    if (
+      findManyArgs.select &&
+      typeof findManyArgs.select === "object" &&
+      Object.keys(findManyArgs.select as Record<string, unknown>).length === 0
+    ) {
+      delete findManyArgs.select;
+    }
+
+    const countArgs: Record<string, unknown> = {};
+    if (
+      this.countQuery.where &&
+      Object.keys(this.countQuery.where as Record<string, unknown>).length > 0
+    ) {
+      countArgs.where = this.countQuery.where;
+    }
+
     const [total, data] = await Promise.all([
-      this.model.count({
-        where: this.countQuery.where,
-      } as any),
+      this.model.count(countArgs as any),
       this.model.findMany(
-        this.query as Parameters<typeof this.model.findMany>[0],
+        findManyArgs as Parameters<typeof this.model.findMany>[0],
       ),
     ]);
 
