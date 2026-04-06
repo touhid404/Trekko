@@ -1,4 +1,3 @@
 frontend
-backend/src/modules
 backend/src/routes
 backend/src/seed.ts
