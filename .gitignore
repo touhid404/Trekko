@@ -1,1 +1,5 @@
-frontend
+frontend/actions
+frontend/app
+frontend/components
+frontend/services
+frontend/zod
