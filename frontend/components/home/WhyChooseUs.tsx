@@ -6,15 +6,9 @@ import {
   Users,
   MapPin,
   Shield,
-  Zap,
   Award,
   Heart,
-  BookOpen,
-  Globe,
   TrendingUp,
-  Lock,
-  MessageSquare,
-  Clock,
 } from "lucide-react"
 
 interface Feature {
@@ -87,7 +81,7 @@ export default function WhyChooseUs() {
             Why Travelers Love Us
           </h2>
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-gray-600">
-            We're not just another travel guide platform. We're a community of
+            We are not just another travel guide platform. We are a community of
             passionate travelers dedicated to helping you discover authentic
             experiences and create unforgettable memories around the world.
           </p>
@@ -95,19 +89,17 @@ export default function WhyChooseUs() {
 
         {/* Features Grid */}
         <div className="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
+          {features.map((feature) => (
             <div
               key={feature.id}
-              className={`transition-all duration-300 ${
-                feature.highlight ? "md:col-span-2 lg:col-span-1" : ""
-              }`}
+              className={`transition-all duration-300 ${feature.highlight ? "md:col-span-2 lg:col-span-1" : ""
+                }`}
             >
               <Card
-                className={`relative h-full border-l-4 transition-all duration-300 hover:shadow-xl ${
-                  feature.highlight
+                className={`relative h-full border-l-4 transition-all duration-300 hover:shadow-xl ${feature.highlight
                     ? "border-[#1989a3] bg-gradient-to-br from-[#1989a3]/10 to-white shadow-lg"
                     : "border-l-gray-200 hover:border-[#1989a3]"
-                }`}
+                  }`}
               >
                 {/* Highlight Badge */}
                 {feature.highlight && (
@@ -119,11 +111,10 @@ export default function WhyChooseUs() {
                 <CardContent className="p-6">
                   {/* Icon Container */}
                   <div
-                    className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-lg ${
-                      feature.highlight
+                    className={`mb-4 inline-flex h-14 w-14 items-center justify-center rounded-lg ${feature.highlight
                         ? "bg-[#1989a3] text-white"
                         : "bg-[#1989a3]/10 text-[#1989a3]"
-                    }`}
+                      }`}
                   >
                     {feature.icon}
                   </div>
@@ -152,7 +143,7 @@ export default function WhyChooseUs() {
         {/* <div className="rounded-2xl bg-gradient-to-r from-[#1989a3] to-[#1989a3] p-8 text-white md:p-12">
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
             {[
-              { number: "5000+", label: "Travel Guides", icon: "📚" },
+              { number: "5000+", label: "Trekko Guides", icon: "📚" },
               { number: "150+", label: "Destinations", icon: "🌍" },
               { number: "12K+", label: "Active Travelers", icon: "👥" },
               { number: "98%", label: "Satisfaction Rate", icon: "⭐" },

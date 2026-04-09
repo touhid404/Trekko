@@ -129,7 +129,7 @@ export default function HowItWorks() {
                 <p className="mb-6 text-sm font-semibold text-white/70">Active Travelers</p>
                 <div className="space-y-3 text-left">
                   {[
-                    { count: "5000+", label: "Travel Guides", color: "bg-blue-500" },
+                    { count: "5000+", label: "Trekko Guides", color: "bg-blue-500" },
                     { count: "150+", label: "Destinations", color: "bg-emerald-500" },
                     { count: "24/7", label: "Community Support", color: "bg-violet-500" },
                   ].map(({ count, label, color }) => (

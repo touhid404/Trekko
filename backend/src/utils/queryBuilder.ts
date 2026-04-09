@@ -452,24 +452,31 @@ export class QueryBuilder<
       countArgs.where = this.countQuery.where;
     }
 
-    const [total, data] = await Promise.all([
-      this.model.count(countArgs as any),
-      this.model.findMany(
-        findManyArgs as Parameters<typeof this.model.findMany>[0],
-      ),
-    ]);
+    try {
+      const [total, data] = await Promise.all([
+        this.model.count(countArgs as any),
+        this.model.findMany(
+          findManyArgs as Parameters<typeof this.model.findMany>[0],
+        ),
+      ]);
 
-    const totalPages = Math.ceil(total / this.limit);
+      const totalPages = Math.ceil(total / this.limit);
 
-    return {
-      data: data as T[],
-      meta: {
-        page: this.page,
-        limit: this.limit,
-        total,
-        totalPages,
-      },
-    };
+      return {
+        data: data as T[],
+        meta: {
+          page: this.page,
+          limit: this.limit,
+          total,
+          totalPages,
+        },
+      };
+    } catch (e: any) {
+      console.error("QueryBuilder Execute Error:", e.message);
+      console.error("countArgs:", JSON.stringify(countArgs, null, 2));
+      console.error("findManyArgs:", JSON.stringify(findManyArgs, null, 2));
+      throw e;
+    }
   }
 
   async count(): Promise<number> {

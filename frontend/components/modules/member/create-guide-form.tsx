@@ -192,9 +192,9 @@ export function CreateGuideForm({ categories }: CreateGuideFormProps) {
     <div className="min-h-screen w-full bg-muted/10 p-6">
       <Card className="w-full max-w-none">
         <CardHeader>
-          <CardTitle>Create Travel Guide</CardTitle>
+          <CardTitle>Create Trekko Guide</CardTitle>
           <CardDescription>
-            Fill in the details to create your travel guide
+            Fill in the details to create your Trekko guide
           </CardDescription>
         </CardHeader>
 
@@ -262,9 +262,9 @@ export function CreateGuideForm({ categories }: CreateGuideFormProps) {
                               >
                                 {String(
                                   category?.title ||
-                                    category?.name ||
-                                    category ||
-                                    "Unnamed"
+                                  category?.name ||
+                                  category ||
+                                  "Unnamed"
                                 )}
                               </SelectItem>
                             )

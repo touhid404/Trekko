@@ -11,5 +11,11 @@ router.post(
   PaymentController.createPaymentSession,
 );
 
+router.post(
+  "/verify-session",
+  chackAuth(MemberRole.MEMBER, MemberRole.ADMIN),
+  PaymentController.verifyPaymentSession,
+);
+
 // Webhook route uses app-level raw middleware at /webhook so Stripe signature validation works.
 export const PaymentRoutes = router;

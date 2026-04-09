@@ -105,7 +105,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 border-t border-zinc-800 pt-8 text-center text-xs">
-          <p>Copyright © {new Date().getFullYear()} Travel Guide. All Rights Reserved.</p>
+          <p>Copyright © {new Date().getFullYear()} Trekko. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

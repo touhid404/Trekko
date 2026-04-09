@@ -1,11 +1,9 @@
 "use client"
 
-import { useState } from "react"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
-import { GuideDetailsModal } from "./GuideDetailsModal"
 import { Pagination } from "@/components/shared/Pagination"
-import { Calendar, Tag, ChevronRight, Compass, Globe, Star } from "lucide-react"
+import { Calendar, ChevronRight, Compass, Globe, Star } from "lucide-react"
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 interface Guide {
   id: string
@@ -33,12 +31,10 @@ export function PurchasesTable({
   currentPage = 1,
   onPageChange,
 }: PurchasesTableProps) {
-  const [selectedGuide, setSelectedGuide] = useState<Guide | null>(null)
-  const [open, setOpen] = useState(false)
+  const router = useRouter()
 
-  const handleView = (guide: Guide) => {
-    setSelectedGuide(guide)
-    setOpen(true)
+  const handleView = (guideId: string) => {
+    router.push(`/travel-guides/${guideId}`)
   }
 
   if (guides.length === 0) {
@@ -61,7 +57,7 @@ export function PurchasesTable({
         {guides.map((guide) => (
           <div
             key={guide.id}
-            onClick={() => handleView(guide)}
+            onClick={() => handleView(guide.id)}
             className="group relative cursor-pointer overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0A0A0A] transition-all duration-700 hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10"
           >
             {/* Immersive Image Header */}
@@ -96,7 +92,7 @@ export function PurchasesTable({
               <div className="absolute bottom-6 left-6">
                 <div className="inline-flex items-center gap-2 rounded-full bg-blue-500/20 px-4 py-1.5 text-[10px] font-black tracking-widest uppercase text-blue-400 backdrop-blur-xl border border-blue-500/20">
                   <Globe className="h-3.5 w-3.5" />
-                  {guide.category.title}
+                  {guide.category?.title || 'General'}
                 </div>
               </div>
             </div>
@@ -139,13 +135,6 @@ export function PurchasesTable({
           </div>
         </div>
       )}
-
-      {/* Modern Dialog Overhaul */}
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-h-[95vh] max-w-6xl overflow-y-auto border-white/10 bg-[#050505] p-0 text-white shadow-2xl backdrop-blur-3xl focus:outline-hidden selection:bg-blue-400">
-          {selectedGuide && <GuideDetailsModal guide={selectedGuide} />}
-        </DialogContent>
-      </Dialog>
     </div>
   )
 }

@@ -395,6 +395,9 @@ const getPurchasedGuides = async (userId: string) => {
       },
       isDeleted: false,
     },
+    include: {
+      category: true,
+    },
   });
 
   return guides;

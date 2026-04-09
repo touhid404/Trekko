@@ -76,7 +76,7 @@ export function RegisterForm({ redirectPath }: { redirectPath?: string }) {
               Join the community
             </h1>
             <p className="mt-3 text-sm text-gray-500">
-              Create your account and start exploring curated travel guides from around the world.
+              Create your account and start exploring curated Trekko guides from around the world.
             </p>
           </div>
 

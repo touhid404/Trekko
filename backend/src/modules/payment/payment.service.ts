@@ -153,7 +153,51 @@ const handlerStripeWebhookEvent = async (event: Stripe.Event) => {
   return { message: `Webhook Event ${event.id} processed successfully` };
 };
 
+const verifyCheckoutSession = async (sessionId: string) => {
+  if (!sessionId) {
+    throw new AppError(status.BAD_REQUEST, "Session ID is required");
+  }
+
+  const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+  if (!session) {
+    throw new AppError(status.NOT_FOUND, "Stripe session not found");
+  }
+
+  const purchaseId = session.metadata?.purchaseId as string | undefined;
+
+  if (!purchaseId) {
+    throw new AppError(status.BAD_REQUEST, "Stripe session missing purchaseId metadata");
+  }
+
+  const existingPurchase = await prisma.purchase.findUnique({
+    where: { id: purchaseId },
+  });
+
+  if (!existingPurchase) {
+    throw new AppError(status.NOT_FOUND, "Purchase record not found");
+  }
+
+  if (existingPurchase.paymentStatus === PaymentStatus.COMPLETED) {
+    return existingPurchase;
+  }
+
+  if (session.payment_status === "paid" || session.status === "complete") {
+    const updatedPurchase = await prisma.purchase.update({
+      where: { id: purchaseId },
+      data: {
+        paymentStatus: PaymentStatus.COMPLETED,
+        transactionId: (session.payment_intent as string) ?? null,
+      },
+    });
+    return updatedPurchase;
+  }
+
+  return existingPurchase;
+};
+
 export const PaymentService = {
   createCheckoutSession,
   handlerStripeWebhookEvent,
+  verifyCheckoutSession,
 };

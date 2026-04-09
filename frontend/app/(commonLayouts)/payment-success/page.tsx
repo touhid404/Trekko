@@ -7,12 +7,29 @@ import Link from "next/link"
 
 function PaymentSuccessContent() {
   const searchParams = useSearchParams()
+  const router = useRouter()
   const sessionId = searchParams.get("session_id")
   const [mounted, setMounted] = React.useState(false)
 
   React.useEffect(() => {
     setMounted(true)
-  }, [])
+
+    const verifySession = async () => {
+      if (!sessionId) return;
+      try {
+        const { httpClient } = await import("@/lib/axios/httpClient")
+        await httpClient.post("/payments/verify-session", { sessionId })
+        // Auto-redirect to My Purchases dashboard page
+        setTimeout(() => {
+          router.push("/dashboard/purchases")
+        }, 3000)
+      } catch (error) {
+        console.error("Failed to verify session", error)
+      }
+    }
+
+    verifySession()
+  }, [sessionId, router])
 
   if (!mounted) {
     return (
@@ -53,7 +70,7 @@ function PaymentSuccessContent() {
 
           {/* Next Steps */}
           <div className="mb-8 rounded-lg border border-blue-200 bg-blue-50 p-6 text-left">
-            <h3 className="mb-4 font-semibold text-blue-900">What's next?</h3>
+            <h3 className="mb-4 font-semibold text-blue-900">What&apos;s next?</h3>
             <ul className="space-y-2 text-blue-800">
               <li className="flex items-start gap-2">
                 <span className="font-bold text-blue-600">1.</span>
@@ -78,11 +95,11 @@ function PaymentSuccessContent() {
         {/* Action Buttons */}
         <div className="grid gap-4 md:grid-cols-2">
           <Link
-            href="/my-profile"
+            href="/dashboard/purchases"
             className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
           >
             <ArrowRight className="h-5 w-5" />
-            Go to My Profile
+            Go to My Purchases
           </Link>
           <Link
             href="/travel-guides"

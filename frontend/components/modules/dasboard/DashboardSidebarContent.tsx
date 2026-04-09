@@ -13,11 +13,9 @@ import { usePathname } from "next/navigation"
 interface DashboardSidebarContentProps {
   userInfo: UserInfo
   navItems: NavSection[]
-  dashboardHome: string
 }
 
 const DashboardSidebarContent = ({
-  dashboardHome,
   navItems,
   userInfo,
 }: DashboardSidebarContentProps) => {
@@ -27,10 +25,10 @@ const DashboardSidebarContent = ({
     <div className="hidden h-full w-64 flex-col overflow-y-auto border-r border-gray-100 bg-[#f9f9f9]/50 md:flex">
       {/* Logo / Brand */}
       <div className="flex h-16 shrink-0 items-center px-8">
-        <Link href={dashboardHome} className="flex items-center gap-2 transition-transform hover:scale-105">
-          <Home className="h-5 w-5 text-black" />
-          <span className="text-xl font-bold tracking-tight text-black">
-            Travel<sup className="text-[10px] font-medium">™</sup>
+        <Link href="/" className="flex items-center gap-2 transition-transform hover:scale-105">
+          <Home className="h-5 w-5 text-gray-900" />
+          <span className="text-xl font-bold tracking-tight text-gray-900">
+            Trekko<sup className="text-[10px] font-medium">™</sup>
           </span>
         </Link>
       </div>
