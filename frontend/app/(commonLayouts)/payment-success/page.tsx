@@ -2,8 +2,7 @@
 
 import * as React from "react"
 import { useSearchParams, useRouter } from "next/navigation"
-import { CheckCircle, ArrowRight, Home, Loader2 } from "lucide-react"
-import Link from "next/link"
+import { CheckCircle, Loader2 } from "lucide-react"
 
 function PaymentSuccessContent() {
   const searchParams = useSearchParams()
@@ -40,134 +39,53 @@ function PaymentSuccessContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 px-4 py-12">
-      <div className="mx-auto max-w-2xl">
-        {/* Success Message */}
-        <div className="mb-8 rounded-lg bg-white p-8 text-center shadow-lg md:p-12">
-          <div className="mb-6 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 animate-pulse rounded-full bg-green-200"></div>
-              <CheckCircle className="relative h-16 w-16 text-green-600" />
+    <div className="relative min-h-screen bg-gray-50 text-gray-900 selection:bg-emerald-400 selection:text-white flex items-center justify-center p-4">
+      {/* Immersive Background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute inset-0 bg-linear-to-b from-gray-50 via-emerald-50/20 to-gray-50" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-100/40 via-transparent to-transparent" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-xl">
+        <div className="overflow-hidden rounded-[3rem] border border-gray-200 bg-white shadow-2xl shadow-emerald-500/5 text-center">
+
+          <div className="p-12 md:p-16">
+            <div className="mx-auto mb-10 flex justify-center">
+              <div className="relative flex h-24 w-24 items-center justify-center rounded-[2rem] bg-emerald-50 border border-emerald-100">
+                <div className="absolute inset-0 animate-ping rounded-[2rem] bg-emerald-400/20 opacity-50"></div>
+                <CheckCircle className="h-10 w-10 text-emerald-500" />
+              </div>
             </div>
+
+            <div className="space-y-4">
+              <h1 className="text-4xl font-black tracking-tighter text-gray-900">
+                Payment Authorized
+              </h1>
+              <p className="text-sm font-light leading-relaxed text-gray-500">
+                Your transaction was completed successfully. Your manifest has been updated and access is now granted.
+              </p>
+            </div>
+
+            {sessionId && (
+              <div className="mt-10 rounded-[2rem] border border-dashed border-gray-200 bg-gray-50/50 p-6 flex flex-col items-center gap-2">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
+                  Transaction Token
+                </span>
+                <span className="font-mono text-sm tracking-tight text-gray-600 break-all">
+                  {sessionId}
+                </span>
+              </div>
+            )}
           </div>
 
-          <h1 className="mb-2 text-3xl font-bold text-gray-900 md:text-4xl">
-            Payment Successful!
-          </h1>
-          <p className="mb-6 text-lg text-gray-600">
-            Thank you for your purchase. Your payment has been processed
-            successfully.
-          </p>
-
-          {sessionId && (
-            <div className="mb-6 rounded-lg bg-gray-50 p-4">
-              <p className="mb-1 text-sm text-gray-500">Session ID</p>
-              <p className="font-mono text-sm break-all text-gray-900">
-                {sessionId}
-              </p>
-            </div>
-          )}
-
-          {/* Next Steps */}
-          <div className="mb-8 rounded-lg border border-blue-200 bg-blue-50 p-6 text-left">
-            <h3 className="mb-4 font-semibold text-blue-900">What&apos;s next?</h3>
-            <ul className="space-y-2 text-blue-800">
-              <li className="flex items-start gap-2">
-                <span className="font-bold text-blue-600">1.</span>
-                <span>Check your email for a confirmation receipt</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="font-bold text-blue-600">2.</span>
-                <span>Access the guide from your profile or dashboard</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="font-bold text-blue-600">3.</span>
-                <span>Start exploring the travel guide content</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="font-bold text-blue-600">4.</span>
-                <span>Share your feedback with the community</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="grid gap-4 md:grid-cols-2">
-          <Link
-            href="/dashboard/purchases"
-            className="flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700"
-          >
-            <ArrowRight className="h-5 w-5" />
-            Go to My Purchases
-          </Link>
-          <Link
-            href="/travel-guides"
-            className="flex items-center justify-center gap-2 rounded-lg bg-gray-200 px-6 py-3 font-semibold text-gray-900 transition hover:bg-gray-300"
-          >
-            <Home className="h-5 w-5" />
-            Browse More Guides
-          </Link>
-        </div>
-
-        {/* FAQ */}
-        <div className="mt-12 rounded-lg bg-white p-6 shadow-lg md:p-8">
-          <h3 className="mb-6 text-lg font-bold text-gray-900">
-            Frequently Asked Questions
-          </h3>
-
-          <div className="space-y-6">
-            <div>
-              <h4 className="mb-2 font-semibold text-gray-900">
-                When will I get access to the guide?
-              </h4>
-              <p className="text-gray-600">
-                You should have instant access to the guide after successful
-                payment. Check your profile or email for download links.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="mb-2 font-semibold text-gray-900">
-                Can I download the guide?
-              </h4>
-              <p className="text-gray-600">
-                Yes! You can download the guide from your profile dashboard
-                anytime. It will be available in your account indefinitely.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="mb-2 font-semibold text-gray-900">
-                Is there a refund policy?
-              </h4>
-              <p className="text-gray-600">
-                Please check our refund policy in the terms and conditions. Most
-                refunds are processed within 7-10 business days.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="mb-2 font-semibold text-gray-900">
-                Do you offer subscriptions?
-              </h4>
-              <p className="text-gray-600">
-                Currently, we offer one-time purchases. Subscription options may
-                be coming soon. Follow our blog for updates!
-              </p>
+          <div className="border-t border-gray-100 bg-gray-50/50 p-6">
+            <div className="flex flex-col items-center justify-center">
+              <div className="flex items-center gap-3 text-[10px] font-black tracking-widest uppercase text-gray-400">
+                <Loader2 className="h-4 w-4 animate-spin text-emerald-500" />
+                Redirecting to your dashboard...
+              </div>
             </div>
           </div>
-        </div>
-
-        {/* Support */}
-        <div className="mt-8 text-center text-gray-600">
-          <p className="mb-2">Need help?</p>
-          <Link
-            href="/"
-            className="font-medium text-blue-600 transition hover:text-blue-700"
-          >
-            Contact Support
-          </Link>
         </div>
       </div>
     </div>

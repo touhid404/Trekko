@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
-import { ArrowLeft, Loader2, AlertCircle, ShieldCheck, ChevronRight, MapPin, Globe } from "lucide-react"
+import { ArrowLeft, Loader2, AlertCircle, ChevronRight, Globe } from "lucide-react"
 import { toast } from "sonner"
 import travelGuideServices from "@/services/travelGuide/travelGuide.service"
 import { initiatePaymentAction } from "@/actions/payment/initiatePaymentAction"
@@ -226,21 +226,7 @@ function PaymentContent() {
               </div>
             </div>
 
-            {/* Trust Badges */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { icon: ShieldCheck, title: "Identity Protection", desc: "End-to-end encryption" },
-                { icon: MapPin, title: "Offline Ready", desc: "No signal? No problem" }
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4 p-6 rounded-[2rem] border border-gray-100 bg-white shadow-sm">
-                  <item.icon className="h-5 w-5 text-blue-600 shrink-0" />
-                  <div>
-                    <h4 className="text-xs font-black uppercase tracking-widest text-gray-900">{item.title}</h4>
-                    <p className="mt-1 text-[10px] text-gray-500 leading-relaxed">{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            {/* End of Guide Pass */}
           </div>
 
           {/* Sidebar: Order Summary */}
