@@ -22,8 +22,9 @@ model User {
     votes        Vote[]
     comments     Comment[]
     purchases    Purchase[]
-    favorites    Favorite[]
-    guideReviews GuideReview[]
+    favorites          Favorite[]
+    guideReviews       GuideReview[]
+    checkpointProgress UserCheckpointProgress[]
 
     @@unique([email])
     @@map("member")

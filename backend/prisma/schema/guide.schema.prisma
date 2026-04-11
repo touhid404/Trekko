@@ -24,6 +24,7 @@ model TravelGuide {
     purchases    Purchase[]
     favorites    Favorite[]
     guideReviews GuideReview[]
+    checkpoints  GuideCheckpoint[]
 
     @@index([memberId])
     @@index([categoryId])

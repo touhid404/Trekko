@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import * as React from "react"
@@ -96,6 +97,7 @@ export function CreateGuideForm({ categories }: CreateGuideFormProps) {
       price: undefined,
       coverImage: undefined,
       images: [],
+      checkpoints: [],
     },
     onSubmit: async ({ value }) => {
       console.log("Form submitted with value:", value)
@@ -164,6 +166,7 @@ export function CreateGuideForm({ categories }: CreateGuideFormProps) {
             : undefined,
           coverImage: coverImageUrl || undefined,
           images: imageUrls.length > 0 ? imageUrls : undefined,
+          checkpoints: parsedPayload.data.checkpoints || [],
         }
 
         console.log("Sending request data:", requestData)

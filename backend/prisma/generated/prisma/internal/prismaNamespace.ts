@@ -389,6 +389,7 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Category: 'Category',
+  GuideCheckpoint: 'GuideCheckpoint',
   Comment: 'Comment',
   Favorite: 'Favorite',
   GuideMedia: 'GuideMedia',
@@ -396,6 +397,7 @@ export const ModelName = {
   TravelGuide: 'TravelGuide',
   NewsletterSubscription: 'NewsletterSubscription',
   Purchase: 'Purchase',
+  UserCheckpointProgress: 'UserCheckpointProgress',
   Vote: 'Vote'
 } as const
 
@@ -412,7 +414,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "category" | "comment" | "favorite" | "guideMedia" | "guideReview" | "travelGuide" | "newsletterSubscription" | "purchase" | "vote"
+    modelProps: "user" | "session" | "account" | "verification" | "category" | "guideCheckpoint" | "comment" | "favorite" | "guideMedia" | "guideReview" | "travelGuide" | "newsletterSubscription" | "purchase" | "userCheckpointProgress" | "vote"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -783,6 +785,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.CategoryCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.CategoryCountAggregateOutputType> | number
+        }
+      }
+    }
+    GuideCheckpoint: {
+      payload: Prisma.$GuideCheckpointPayload<ExtArgs>
+      fields: Prisma.GuideCheckpointFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GuideCheckpointFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GuideCheckpointFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload>
+        }
+        findFirst: {
+          args: Prisma.GuideCheckpointFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GuideCheckpointFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload>
+        }
+        findMany: {
+          args: Prisma.GuideCheckpointFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload>[]
+        }
+        create: {
+          args: Prisma.GuideCheckpointCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload>
+        }
+        createMany: {
+          args: Prisma.GuideCheckpointCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GuideCheckpointCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload>[]
+        }
+        delete: {
+          args: Prisma.GuideCheckpointDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload>
+        }
+        update: {
+          args: Prisma.GuideCheckpointUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload>
+        }
+        deleteMany: {
+          args: Prisma.GuideCheckpointDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GuideCheckpointUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GuideCheckpointUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload>[]
+        }
+        upsert: {
+          args: Prisma.GuideCheckpointUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GuideCheckpointPayload>
+        }
+        aggregate: {
+          args: Prisma.GuideCheckpointAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGuideCheckpoint>
+        }
+        groupBy: {
+          args: Prisma.GuideCheckpointGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GuideCheckpointGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GuideCheckpointCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GuideCheckpointCountAggregateOutputType> | number
         }
       }
     }
@@ -1304,6 +1380,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    UserCheckpointProgress: {
+      payload: Prisma.$UserCheckpointProgressPayload<ExtArgs>
+      fields: Prisma.UserCheckpointProgressFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UserCheckpointProgressFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UserCheckpointProgressFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload>
+        }
+        findFirst: {
+          args: Prisma.UserCheckpointProgressFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UserCheckpointProgressFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload>
+        }
+        findMany: {
+          args: Prisma.UserCheckpointProgressFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload>[]
+        }
+        create: {
+          args: Prisma.UserCheckpointProgressCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload>
+        }
+        createMany: {
+          args: Prisma.UserCheckpointProgressCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UserCheckpointProgressCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload>[]
+        }
+        delete: {
+          args: Prisma.UserCheckpointProgressDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload>
+        }
+        update: {
+          args: Prisma.UserCheckpointProgressUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload>
+        }
+        deleteMany: {
+          args: Prisma.UserCheckpointProgressDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UserCheckpointProgressUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UserCheckpointProgressUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload>[]
+        }
+        upsert: {
+          args: Prisma.UserCheckpointProgressUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserCheckpointProgressPayload>
+        }
+        aggregate: {
+          args: Prisma.UserCheckpointProgressAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUserCheckpointProgress>
+        }
+        groupBy: {
+          args: Prisma.UserCheckpointProgressGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserCheckpointProgressGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UserCheckpointProgressCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UserCheckpointProgressCountAggregateOutputType> | number
+        }
+      }
+    }
     Vote: {
       payload: Prisma.$VotePayload<ExtArgs>
       fields: Prisma.VoteFieldRefs
@@ -1497,6 +1647,19 @@ export const CategoryScalarFieldEnum = {
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
+export const GuideCheckpointScalarFieldEnum = {
+  id: 'id',
+  guideId: 'guideId',
+  title: 'title',
+  description: 'description',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GuideCheckpointScalarFieldEnum = (typeof GuideCheckpointScalarFieldEnum)[keyof typeof GuideCheckpointScalarFieldEnum]
+
+
 export const CommentScalarFieldEnum = {
   id: 'id',
   guideId: 'guideId',
@@ -1592,6 +1755,18 @@ export const PurchaseScalarFieldEnum = {
 } as const
 
 export type PurchaseScalarFieldEnum = (typeof PurchaseScalarFieldEnum)[keyof typeof PurchaseScalarFieldEnum]
+
+
+export const UserCheckpointProgressScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  checkpointId: 'checkpointId',
+  isCompleted: 'isCompleted',
+  completedAt: 'completedAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserCheckpointProgressScalarFieldEnum = (typeof UserCheckpointProgressScalarFieldEnum)[keyof typeof UserCheckpointProgressScalarFieldEnum]
 
 
 export const VoteScalarFieldEnum = {
@@ -1731,6 +1906,20 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
+ * Reference to a field of type 'Int'
+ */
+export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+/**
+ * Reference to a field of type 'Int[]'
+ */
+export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+/**
  * Reference to a field of type 'MediaType'
  */
 export type EnumMediaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MediaType'>
@@ -1825,20 +2014,6 @@ export type EnumVoteTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
  * Reference to a field of type 'VoteType[]'
  */
 export type ListEnumVoteTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VoteType[]'>
-    
-
-
-/**
- * Reference to a field of type 'Int'
- */
-export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-/**
- * Reference to a field of type 'Int[]'
- */
-export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 /**
@@ -1941,6 +2116,7 @@ export type GlobalOmitConfig = {
   account?: Prisma.AccountOmit
   verification?: Prisma.VerificationOmit
   category?: Prisma.CategoryOmit
+  guideCheckpoint?: Prisma.GuideCheckpointOmit
   comment?: Prisma.CommentOmit
   favorite?: Prisma.FavoriteOmit
   guideMedia?: Prisma.GuideMediaOmit
@@ -1948,6 +2124,7 @@ export type GlobalOmitConfig = {
   travelGuide?: Prisma.TravelGuideOmit
   newsletterSubscription?: Prisma.NewsletterSubscriptionOmit
   purchase?: Prisma.PurchaseOmit
+  userCheckpointProgress?: Prisma.UserCheckpointProgressOmit
   vote?: Prisma.VoteOmit
 }
 

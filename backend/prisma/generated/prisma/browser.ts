@@ -43,6 +43,11 @@ export type Verification = Prisma.VerificationModel
  */
 export type Category = Prisma.CategoryModel
 /**
+ * Model GuideCheckpoint
+ * 
+ */
+export type GuideCheckpoint = Prisma.GuideCheckpointModel
+/**
  * Model Comment
  * 
  */
@@ -77,6 +82,11 @@ export type NewsletterSubscription = Prisma.NewsletterSubscriptionModel
  * 
  */
 export type Purchase = Prisma.PurchaseModel
+/**
+ * Model UserCheckpointProgress
+ * 
+ */
+export type UserCheckpointProgress = Prisma.UserCheckpointProgressModel
 /**
  * Model Vote
  * 

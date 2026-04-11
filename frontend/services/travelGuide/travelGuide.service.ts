@@ -99,6 +99,15 @@ interface GuideDetails {
     name: string
     email: string
   }
+  checkpoints?: Array<{
+    id: string
+    title: string
+    description: string | null
+    order: number
+    progress?: Array<{
+      isCompleted: boolean
+    }>
+  }>
 }
 
 interface GetGuideDetailsResponse {

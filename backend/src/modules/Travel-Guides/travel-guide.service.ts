@@ -233,6 +233,16 @@ const getById = async (id: string, userId?: string) => {
     },
     include: {
       category: true,
+      checkpoints: {
+        include: {
+          progress: userId ? {
+            where: { userId }
+          } : false
+        },
+        orderBy: {
+          order: 'asc'
+        }
+      }
     },
   });
 
@@ -253,7 +263,6 @@ const getById = async (id: string, userId?: string) => {
 
   const isOwner = userId && guide.memberId === userId;
 
-  // 🟢 CASE 1: FREE GUIDE → everyone can see full
   if (!guide.isPaid) {
     return {
       ...guide,
@@ -261,7 +270,6 @@ const getById = async (id: string, userId?: string) => {
     };
   }
 
-  // 🔴 CASE 2: PAID GUIDE
 
   // Owner can see full
   if (isOwner) {
@@ -294,7 +302,6 @@ const getById = async (id: string, userId?: string) => {
     },
   });
 
-  // যদি কিনে থাকে → full access
   if (hasPurchased) {
     return {
       ...guide,
@@ -302,7 +309,6 @@ const getById = async (id: string, userId?: string) => {
     };
   }
 
-  // ❌ না কিনলে → preview only
   return {
     id: guide.id,
     title: guide.title,
@@ -382,7 +388,24 @@ const create = async (
       );
     }
 
-    return { ...guide, guideMedia: medias };
+    // Create checkpoints if provided
+    let checkpoints: any[] = [];
+    if (data.checkpoints && data.checkpoints.length > 0) {
+      checkpoints = await Promise.all(
+        data.checkpoints.map((checkpoint, index) =>
+          tx.guideCheckpoint.create({
+            data: {
+              guideId: guide.id,
+              title: checkpoint.title,
+              description: checkpoint.description || null,
+              order: checkpoint.order ?? index,
+            },
+          }),
+        ),
+      );
+    }
+
+    return { ...guide, guideMedia: medias, checkpoints };
   });
 
   return result as TravelGuide;

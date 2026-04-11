@@ -56,6 +56,7 @@ export const ModelName = {
   Account: 'Account',
   Verification: 'Verification',
   Category: 'Category',
+  GuideCheckpoint: 'GuideCheckpoint',
   Comment: 'Comment',
   Favorite: 'Favorite',
   GuideMedia: 'GuideMedia',
@@ -63,6 +64,7 @@ export const ModelName = {
   TravelGuide: 'TravelGuide',
   NewsletterSubscription: 'NewsletterSubscription',
   Purchase: 'Purchase',
+  UserCheckpointProgress: 'UserCheckpointProgress',
   Vote: 'Vote'
 } as const
 
@@ -162,6 +164,19 @@ export const CategoryScalarFieldEnum = {
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
+export const GuideCheckpointScalarFieldEnum = {
+  id: 'id',
+  guideId: 'guideId',
+  title: 'title',
+  description: 'description',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GuideCheckpointScalarFieldEnum = (typeof GuideCheckpointScalarFieldEnum)[keyof typeof GuideCheckpointScalarFieldEnum]
+
+
 export const CommentScalarFieldEnum = {
   id: 'id',
   guideId: 'guideId',
@@ -257,6 +272,18 @@ export const PurchaseScalarFieldEnum = {
 } as const
 
 export type PurchaseScalarFieldEnum = (typeof PurchaseScalarFieldEnum)[keyof typeof PurchaseScalarFieldEnum]
+
+
+export const UserCheckpointProgressScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  checkpointId: 'checkpointId',
+  isCompleted: 'isCompleted',
+  completedAt: 'completedAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UserCheckpointProgressScalarFieldEnum = (typeof UserCheckpointProgressScalarFieldEnum)[keyof typeof UserCheckpointProgressScalarFieldEnum]
 
 
 export const VoteScalarFieldEnum = {

@@ -7,6 +7,7 @@ import { NewsletterRoutes } from "../modules/Newsletter/newsletter.route";
 import { VoteRoutes } from "../modules/Vote/vote.route";
 import { CommentRoutes } from "../modules/comments/comment.route";
 import { PaymentRoutes } from "../modules/payment/payment.route";
+import { CheckpointRoutes } from "../modules/Checkpoint/checkpoint.route";
 
 const router = express.Router();
 
@@ -33,5 +34,8 @@ router.use("/admin", AdminRoutes);
 
 // Newsletter routes
 router.use("/newsletter", NewsletterRoutes);
+
+// Checkpoint routes
+router.use("/checkpoints", CheckpointRoutes);
 
 export default router;

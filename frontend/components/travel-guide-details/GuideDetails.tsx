@@ -8,6 +8,7 @@ import commentServices from "@/services/travelGuide/comment.service"
 import { getUserInfo } from "@/services/auth.service"
 import VoteSection from "./VoteSection"
 import CommentsSection from "./CommentsSection"
+import CheckpointProgressTracker from "./CheckpointProgressTracker"
 
 interface Props {
   id: string
@@ -284,6 +285,14 @@ export default async function GuideDetails({ id }: Props) {
                 </div>
               )}
 
+              {/* Interactive Explorer Checklist (For Purchasers) */}
+              {!guide.locked && guide.checkpoints && guide.checkpoints.length > 0 && (
+                <CheckpointProgressTracker 
+                  guideId={id} 
+                  checkpoints={guide.checkpoints} 
+                />
+              )}
+              
               {/* Voting Section */}
               {!guide.locked && (
                 <VoteSection guideId={id} voteStats={voteStats} />

@@ -1,0 +1,18 @@
+// User Checkpoint Progress model - Tracks user completion of guide checkpoints
+model UserCheckpointProgress {
+    id           String   @id @default(cuid())
+    userId       String
+    checkpointId String
+    isCompleted  Boolean  @default(false)
+    completedAt  DateTime?
+    updatedAt    DateTime @updatedAt
+
+    // Relations
+    user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+    checkpoint GuideCheckpoint @relation(fields: [checkpointId], references: [id], onDelete: Cascade)
+
+    @@unique([userId, checkpointId])
+    @@index([userId])
+    @@index([checkpointId])
+    @@map("user_checkpoint_progress")
+}

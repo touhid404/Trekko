@@ -14,6 +14,11 @@ const ItineraryItemSchema = z.object({
     .min(1, "At least one activity is required"),
 })
 
+const CheckpointItemSchema = z.object({
+  title: z.string().min(1, "Checkpoint title is required"),
+  description: z.string().optional(),
+})
+
 export const TravelGuideValidationSchema = {
   create: z.object({
     title: z.string().min(1, "Title is required"),
@@ -35,6 +40,7 @@ export const TravelGuideValidationSchema = {
     coverImage: z.string().url("Invalid URL").optional().or(z.literal("")),
     // Array of Cloudinary image URLs
     images: z.array(z.string().url("Invalid image URL")).optional(),
+    checkpoints: z.array(CheckpointItemSchema).optional(),
   }),
 }
 

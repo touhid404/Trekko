@@ -24,6 +24,28 @@ export type TravelGuideCreateInput = {
     type: "IMAGE" | "VIDEO" | "PDF";
     url: string;
   }[];
+  checkpoints?: {
+    title: string;
+    description?: string;
+    order?: number;
+  }[];
+};
+
+export type TravelGuideCheckpoint = {
+  id: string;
+  guideId: string;
+  title: string;
+  description: string | null;
+  order: number;
+  createdAt: Date;
+  updatedAt: Date;
+  progress?: Array<{
+    id: string;
+    userId: string;
+    checkpointId: string;
+    isCompleted: boolean;
+    completedAt: Date | null;
+  }>;
 };
 
 export type TravelGuide = {
@@ -49,4 +71,5 @@ export type TravelGuide = {
     createdAt: Date;
     updatedAt: Date;
   }>;
+  checkpoints?: TravelGuideCheckpoint[];
 };

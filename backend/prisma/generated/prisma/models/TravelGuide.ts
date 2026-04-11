@@ -292,6 +292,7 @@ export type TravelGuideWhereInput = {
   purchases?: Prisma.PurchaseListRelationFilter
   favorites?: Prisma.FavoriteListRelationFilter
   guideReviews?: Prisma.GuideReviewListRelationFilter
+  checkpoints?: Prisma.GuideCheckpointListRelationFilter
 }
 
 export type TravelGuideOrderByWithRelationInput = {
@@ -317,6 +318,7 @@ export type TravelGuideOrderByWithRelationInput = {
   purchases?: Prisma.PurchaseOrderByRelationAggregateInput
   favorites?: Prisma.FavoriteOrderByRelationAggregateInput
   guideReviews?: Prisma.GuideReviewOrderByRelationAggregateInput
+  checkpoints?: Prisma.GuideCheckpointOrderByRelationAggregateInput
 }
 
 export type TravelGuideWhereUniqueInput = Prisma.AtLeast<{
@@ -345,6 +347,7 @@ export type TravelGuideWhereUniqueInput = Prisma.AtLeast<{
   purchases?: Prisma.PurchaseListRelationFilter
   favorites?: Prisma.FavoriteListRelationFilter
   guideReviews?: Prisma.GuideReviewListRelationFilter
+  checkpoints?: Prisma.GuideCheckpointListRelationFilter
 }, "id">
 
 export type TravelGuideOrderByWithAggregationInput = {
@@ -410,6 +413,7 @@ export type TravelGuideCreateInput = {
   purchases?: Prisma.PurchaseCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUncheckedCreateInput = {
@@ -433,6 +437,7 @@ export type TravelGuideUncheckedCreateInput = {
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUpdateInput = {
@@ -456,6 +461,7 @@ export type TravelGuideUpdateInput = {
   purchases?: Prisma.PurchaseUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateInput = {
@@ -479,6 +485,7 @@ export type TravelGuideUncheckedUpdateInput = {
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideCreateManyInput = {
@@ -686,6 +693,20 @@ export type TravelGuideUncheckedUpdateManyWithoutCategoryNestedInput = {
   deleteMany?: Prisma.TravelGuideScalarWhereInput | Prisma.TravelGuideScalarWhereInput[]
 }
 
+export type TravelGuideCreateNestedOneWithoutCheckpointsInput = {
+  create?: Prisma.XOR<Prisma.TravelGuideCreateWithoutCheckpointsInput, Prisma.TravelGuideUncheckedCreateWithoutCheckpointsInput>
+  connectOrCreate?: Prisma.TravelGuideCreateOrConnectWithoutCheckpointsInput
+  connect?: Prisma.TravelGuideWhereUniqueInput
+}
+
+export type TravelGuideUpdateOneRequiredWithoutCheckpointsNestedInput = {
+  create?: Prisma.XOR<Prisma.TravelGuideCreateWithoutCheckpointsInput, Prisma.TravelGuideUncheckedCreateWithoutCheckpointsInput>
+  connectOrCreate?: Prisma.TravelGuideCreateOrConnectWithoutCheckpointsInput
+  upsert?: Prisma.TravelGuideUpsertWithoutCheckpointsInput
+  connect?: Prisma.TravelGuideWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.TravelGuideUpdateToOneWithWhereWithoutCheckpointsInput, Prisma.TravelGuideUpdateWithoutCheckpointsInput>, Prisma.TravelGuideUncheckedUpdateWithoutCheckpointsInput>
+}
+
 export type TravelGuideCreateNestedOneWithoutCommentsInput = {
   create?: Prisma.XOR<Prisma.TravelGuideCreateWithoutCommentsInput, Prisma.TravelGuideUncheckedCreateWithoutCommentsInput>
   connectOrCreate?: Prisma.TravelGuideCreateOrConnectWithoutCommentsInput
@@ -802,6 +823,7 @@ export type TravelGuideCreateWithoutMemberInput = {
   purchases?: Prisma.PurchaseCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUncheckedCreateWithoutMemberInput = {
@@ -824,6 +846,7 @@ export type TravelGuideUncheckedCreateWithoutMemberInput = {
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideCreateOrConnectWithoutMemberInput = {
@@ -892,6 +915,7 @@ export type TravelGuideCreateWithoutCategoryInput = {
   purchases?: Prisma.PurchaseCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUncheckedCreateWithoutCategoryInput = {
@@ -914,6 +938,7 @@ export type TravelGuideUncheckedCreateWithoutCategoryInput = {
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideCreateOrConnectWithoutCategoryInput = {
@@ -942,6 +967,114 @@ export type TravelGuideUpdateManyWithWhereWithoutCategoryInput = {
   data: Prisma.XOR<Prisma.TravelGuideUpdateManyMutationInput, Prisma.TravelGuideUncheckedUpdateManyWithoutCategoryInput>
 }
 
+export type TravelGuideCreateWithoutCheckpointsInput = {
+  id?: string
+  title: string
+  description: string
+  itinerary?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.GuideStatus
+  isPaid?: boolean
+  price?: number | null
+  coverImage?: string | null
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  member: Prisma.UserCreateNestedOneWithoutGuidesInput
+  category: Prisma.CategoryCreateNestedOneWithoutGuidesInput
+  guideMedia?: Prisma.GuideMediaCreateNestedManyWithoutGuideInput
+  votes?: Prisma.VoteCreateNestedManyWithoutGuideInput
+  comments?: Prisma.CommentCreateNestedManyWithoutGuideInput
+  purchases?: Prisma.PurchaseCreateNestedManyWithoutGuideInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutGuideInput
+  guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutGuideInput
+}
+
+export type TravelGuideUncheckedCreateWithoutCheckpointsInput = {
+  id?: string
+  memberId: string
+  categoryId: string
+  title: string
+  description: string
+  itinerary?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.GuideStatus
+  isPaid?: boolean
+  price?: number | null
+  coverImage?: string | null
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  guideMedia?: Prisma.GuideMediaUncheckedCreateNestedManyWithoutGuideInput
+  votes?: Prisma.VoteUncheckedCreateNestedManyWithoutGuideInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutGuideInput
+  purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutGuideInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutGuideInput
+  guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutGuideInput
+}
+
+export type TravelGuideCreateOrConnectWithoutCheckpointsInput = {
+  where: Prisma.TravelGuideWhereUniqueInput
+  create: Prisma.XOR<Prisma.TravelGuideCreateWithoutCheckpointsInput, Prisma.TravelGuideUncheckedCreateWithoutCheckpointsInput>
+}
+
+export type TravelGuideUpsertWithoutCheckpointsInput = {
+  update: Prisma.XOR<Prisma.TravelGuideUpdateWithoutCheckpointsInput, Prisma.TravelGuideUncheckedUpdateWithoutCheckpointsInput>
+  create: Prisma.XOR<Prisma.TravelGuideCreateWithoutCheckpointsInput, Prisma.TravelGuideUncheckedCreateWithoutCheckpointsInput>
+  where?: Prisma.TravelGuideWhereInput
+}
+
+export type TravelGuideUpdateToOneWithWhereWithoutCheckpointsInput = {
+  where?: Prisma.TravelGuideWhereInput
+  data: Prisma.XOR<Prisma.TravelGuideUpdateWithoutCheckpointsInput, Prisma.TravelGuideUncheckedUpdateWithoutCheckpointsInput>
+}
+
+export type TravelGuideUpdateWithoutCheckpointsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  itinerary?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumGuideStatusFieldUpdateOperationsInput | $Enums.GuideStatus
+  isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  member?: Prisma.UserUpdateOneRequiredWithoutGuidesNestedInput
+  category?: Prisma.CategoryUpdateOneRequiredWithoutGuidesNestedInput
+  guideMedia?: Prisma.GuideMediaUpdateManyWithoutGuideNestedInput
+  votes?: Prisma.VoteUpdateManyWithoutGuideNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutGuideNestedInput
+  purchases?: Prisma.PurchaseUpdateManyWithoutGuideNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutGuideNestedInput
+  guideReviews?: Prisma.GuideReviewUpdateManyWithoutGuideNestedInput
+}
+
+export type TravelGuideUncheckedUpdateWithoutCheckpointsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  memberId?: Prisma.StringFieldUpdateOperationsInput | string
+  categoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.StringFieldUpdateOperationsInput | string
+  itinerary?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumGuideStatusFieldUpdateOperationsInput | $Enums.GuideStatus
+  isPaid?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  price?: Prisma.NullableFloatFieldUpdateOperationsInput | number | null
+  coverImage?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  guideMedia?: Prisma.GuideMediaUncheckedUpdateManyWithoutGuideNestedInput
+  votes?: Prisma.VoteUncheckedUpdateManyWithoutGuideNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutGuideNestedInput
+  purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutGuideNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutGuideNestedInput
+  guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutGuideNestedInput
+}
+
 export type TravelGuideCreateWithoutCommentsInput = {
   id?: string
   title: string
@@ -962,6 +1095,7 @@ export type TravelGuideCreateWithoutCommentsInput = {
   purchases?: Prisma.PurchaseCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUncheckedCreateWithoutCommentsInput = {
@@ -984,6 +1118,7 @@ export type TravelGuideUncheckedCreateWithoutCommentsInput = {
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideCreateOrConnectWithoutCommentsInput = {
@@ -1022,6 +1157,7 @@ export type TravelGuideUpdateWithoutCommentsInput = {
   purchases?: Prisma.PurchaseUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateWithoutCommentsInput = {
@@ -1044,6 +1180,7 @@ export type TravelGuideUncheckedUpdateWithoutCommentsInput = {
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideCreateWithoutFavoritesInput = {
@@ -1066,6 +1203,7 @@ export type TravelGuideCreateWithoutFavoritesInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutGuideInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUncheckedCreateWithoutFavoritesInput = {
@@ -1088,6 +1226,7 @@ export type TravelGuideUncheckedCreateWithoutFavoritesInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutGuideInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideCreateOrConnectWithoutFavoritesInput = {
@@ -1126,6 +1265,7 @@ export type TravelGuideUpdateWithoutFavoritesInput = {
   comments?: Prisma.CommentUpdateManyWithoutGuideNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateWithoutFavoritesInput = {
@@ -1148,6 +1288,7 @@ export type TravelGuideUncheckedUpdateWithoutFavoritesInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutGuideNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideCreateWithoutGuideMediaInput = {
@@ -1170,6 +1311,7 @@ export type TravelGuideCreateWithoutGuideMediaInput = {
   purchases?: Prisma.PurchaseCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUncheckedCreateWithoutGuideMediaInput = {
@@ -1192,6 +1334,7 @@ export type TravelGuideUncheckedCreateWithoutGuideMediaInput = {
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideCreateOrConnectWithoutGuideMediaInput = {
@@ -1230,6 +1373,7 @@ export type TravelGuideUpdateWithoutGuideMediaInput = {
   purchases?: Prisma.PurchaseUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateWithoutGuideMediaInput = {
@@ -1252,6 +1396,7 @@ export type TravelGuideUncheckedUpdateWithoutGuideMediaInput = {
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideCreateWithoutGuideReviewsInput = {
@@ -1274,6 +1419,7 @@ export type TravelGuideCreateWithoutGuideReviewsInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutGuideInput
   purchases?: Prisma.PurchaseCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUncheckedCreateWithoutGuideReviewsInput = {
@@ -1296,6 +1442,7 @@ export type TravelGuideUncheckedCreateWithoutGuideReviewsInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutGuideInput
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideCreateOrConnectWithoutGuideReviewsInput = {
@@ -1334,6 +1481,7 @@ export type TravelGuideUpdateWithoutGuideReviewsInput = {
   comments?: Prisma.CommentUpdateManyWithoutGuideNestedInput
   purchases?: Prisma.PurchaseUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateWithoutGuideReviewsInput = {
@@ -1356,6 +1504,7 @@ export type TravelGuideUncheckedUpdateWithoutGuideReviewsInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutGuideNestedInput
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideCreateWithoutPurchasesInput = {
@@ -1378,6 +1527,7 @@ export type TravelGuideCreateWithoutPurchasesInput = {
   comments?: Prisma.CommentCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUncheckedCreateWithoutPurchasesInput = {
@@ -1400,6 +1550,7 @@ export type TravelGuideUncheckedCreateWithoutPurchasesInput = {
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideCreateOrConnectWithoutPurchasesInput = {
@@ -1438,6 +1589,7 @@ export type TravelGuideUpdateWithoutPurchasesInput = {
   comments?: Prisma.CommentUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateWithoutPurchasesInput = {
@@ -1460,6 +1612,7 @@ export type TravelGuideUncheckedUpdateWithoutPurchasesInput = {
   comments?: Prisma.CommentUncheckedUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideCreateWithoutVotesInput = {
@@ -1482,6 +1635,7 @@ export type TravelGuideCreateWithoutVotesInput = {
   purchases?: Prisma.PurchaseCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideUncheckedCreateWithoutVotesInput = {
@@ -1504,6 +1658,7 @@ export type TravelGuideUncheckedCreateWithoutVotesInput = {
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutGuideInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutGuideInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutGuideInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedCreateNestedManyWithoutGuideInput
 }
 
 export type TravelGuideCreateOrConnectWithoutVotesInput = {
@@ -1542,6 +1697,7 @@ export type TravelGuideUpdateWithoutVotesInput = {
   purchases?: Prisma.PurchaseUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateWithoutVotesInput = {
@@ -1564,6 +1720,7 @@ export type TravelGuideUncheckedUpdateWithoutVotesInput = {
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideCreateManyMemberInput = {
@@ -1602,6 +1759,7 @@ export type TravelGuideUpdateWithoutMemberInput = {
   purchases?: Prisma.PurchaseUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateWithoutMemberInput = {
@@ -1624,6 +1782,7 @@ export type TravelGuideUncheckedUpdateWithoutMemberInput = {
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateManyWithoutMemberInput = {
@@ -1678,6 +1837,7 @@ export type TravelGuideUpdateWithoutCategoryInput = {
   purchases?: Prisma.PurchaseUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateWithoutCategoryInput = {
@@ -1700,6 +1860,7 @@ export type TravelGuideUncheckedUpdateWithoutCategoryInput = {
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutGuideNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutGuideNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutGuideNestedInput
+  checkpoints?: Prisma.GuideCheckpointUncheckedUpdateManyWithoutGuideNestedInput
 }
 
 export type TravelGuideUncheckedUpdateManyWithoutCategoryInput = {
@@ -1730,6 +1891,7 @@ export type TravelGuideCountOutputType = {
   purchases: number
   favorites: number
   guideReviews: number
+  checkpoints: number
 }
 
 export type TravelGuideCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1739,6 +1901,7 @@ export type TravelGuideCountOutputTypeSelect<ExtArgs extends runtime.Types.Exten
   purchases?: boolean | TravelGuideCountOutputTypeCountPurchasesArgs
   favorites?: boolean | TravelGuideCountOutputTypeCountFavoritesArgs
   guideReviews?: boolean | TravelGuideCountOutputTypeCountGuideReviewsArgs
+  checkpoints?: boolean | TravelGuideCountOutputTypeCountCheckpointsArgs
 }
 
 /**
@@ -1793,6 +1956,13 @@ export type TravelGuideCountOutputTypeCountGuideReviewsArgs<ExtArgs extends runt
   where?: Prisma.GuideReviewWhereInput
 }
 
+/**
+ * TravelGuideCountOutputType without action
+ */
+export type TravelGuideCountOutputTypeCountCheckpointsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.GuideCheckpointWhereInput
+}
+
 
 export type TravelGuideSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1817,6 +1987,7 @@ export type TravelGuideSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   purchases?: boolean | Prisma.TravelGuide$purchasesArgs<ExtArgs>
   favorites?: boolean | Prisma.TravelGuide$favoritesArgs<ExtArgs>
   guideReviews?: boolean | Prisma.TravelGuide$guideReviewsArgs<ExtArgs>
+  checkpoints?: boolean | Prisma.TravelGuide$checkpointsArgs<ExtArgs>
   _count?: boolean | Prisma.TravelGuideCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["travelGuide"]>
 
@@ -1885,6 +2056,7 @@ export type TravelGuideInclude<ExtArgs extends runtime.Types.Extensions.Internal
   purchases?: boolean | Prisma.TravelGuide$purchasesArgs<ExtArgs>
   favorites?: boolean | Prisma.TravelGuide$favoritesArgs<ExtArgs>
   guideReviews?: boolean | Prisma.TravelGuide$guideReviewsArgs<ExtArgs>
+  checkpoints?: boolean | Prisma.TravelGuide$checkpointsArgs<ExtArgs>
   _count?: boolean | Prisma.TravelGuideCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type TravelGuideIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1907,6 +2079,7 @@ export type $TravelGuidePayload<ExtArgs extends runtime.Types.Extensions.Interna
     purchases: Prisma.$PurchasePayload<ExtArgs>[]
     favorites: Prisma.$FavoritePayload<ExtArgs>[]
     guideReviews: Prisma.$GuideReviewPayload<ExtArgs>[]
+    checkpoints: Prisma.$GuideCheckpointPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2325,6 +2498,7 @@ export interface Prisma__TravelGuideClient<T, Null = never, ExtArgs extends runt
   purchases<T extends Prisma.TravelGuide$purchasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TravelGuide$purchasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PurchasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   favorites<T extends Prisma.TravelGuide$favoritesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TravelGuide$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   guideReviews<T extends Prisma.TravelGuide$guideReviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TravelGuide$guideReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GuideReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  checkpoints<T extends Prisma.TravelGuide$checkpointsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.TravelGuide$checkpointsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GuideCheckpointPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2910,6 +3084,30 @@ export type TravelGuide$guideReviewsArgs<ExtArgs extends runtime.Types.Extension
   take?: number
   skip?: number
   distinct?: Prisma.GuideReviewScalarFieldEnum | Prisma.GuideReviewScalarFieldEnum[]
+}
+
+/**
+ * TravelGuide.checkpoints
+ */
+export type TravelGuide$checkpointsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GuideCheckpoint
+   */
+  select?: Prisma.GuideCheckpointSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GuideCheckpoint
+   */
+  omit?: Prisma.GuideCheckpointOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GuideCheckpointInclude<ExtArgs> | null
+  where?: Prisma.GuideCheckpointWhereInput
+  orderBy?: Prisma.GuideCheckpointOrderByWithRelationInput | Prisma.GuideCheckpointOrderByWithRelationInput[]
+  cursor?: Prisma.GuideCheckpointWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.GuideCheckpointScalarFieldEnum | Prisma.GuideCheckpointScalarFieldEnum[]
 }
 
 /**
