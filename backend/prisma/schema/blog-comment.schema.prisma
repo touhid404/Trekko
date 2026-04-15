@@ -1,0 +1,23 @@
+// BlogComment model - Comments with nested replies on blog posts
+model BlogComment {
+    id        String    @id @default(cuid())
+    blogId    String
+    memberId  String // FK to Better Auth user
+    parentId  String? // For nested replies
+    comment   String
+    isDeleted Boolean   @default(false)
+    deletedAt DateTime?
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+
+    // Relations
+    member  User          @relation(fields: [memberId], references: [id], onDelete: Cascade)
+    blog    Blog          @relation(fields: [blogId], references: [id], onDelete: Cascade)
+    parent  BlogComment?  @relation("BlogCommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+    replies BlogComment[] @relation("BlogCommentReplies")
+
+    @@index([blogId])
+    @@index([memberId])
+    @@index([parentId])
+    @@map("blog_comments")
+}

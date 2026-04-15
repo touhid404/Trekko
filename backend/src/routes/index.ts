@@ -8,6 +8,9 @@ import { VoteRoutes } from "../modules/Vote/vote.route";
 import { CommentRoutes } from "../modules/comments/comment.route";
 import { PaymentRoutes } from "../modules/payment/payment.route";
 import { CheckpointRoutes } from "../modules/Checkpoint/checkpoint.route";
+import { BlogRoutes } from "../modules/Blog/blog.route";
+import { BlogCommentRoutes } from "../modules/BlogComment/blog-comment.route";
+import { BlogLikeRoutes } from "../modules/BlogLike/blog-like.route";
 
 const router = express.Router();
 
@@ -38,4 +41,14 @@ router.use("/newsletter", NewsletterRoutes);
 // Checkpoint routes
 router.use("/checkpoints", CheckpointRoutes);
 
+// Blog routes
+router.use("/blogs", BlogRoutes);
+
+// Blog Comment routes
+router.use("/blog-comments", BlogCommentRoutes);
+
+// Blog Like routes
+router.use("/blog-likes", BlogLikeRoutes);
+
 export default router;
+

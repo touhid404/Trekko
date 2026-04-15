@@ -62,6 +62,21 @@ export type Account = Prisma.AccountModel
  */
 export type Verification = Prisma.VerificationModel
 /**
+ * Model BlogComment
+ * 
+ */
+export type BlogComment = Prisma.BlogCommentModel
+/**
+ * Model BlogLike
+ * 
+ */
+export type BlogLike = Prisma.BlogLikeModel
+/**
+ * Model Blog
+ * 
+ */
+export type Blog = Prisma.BlogModel
+/**
  * Model Category
  * 
  */

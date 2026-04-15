@@ -271,6 +271,9 @@ export type UserWhereInput = {
   favorites?: Prisma.FavoriteListRelationFilter
   guideReviews?: Prisma.GuideReviewListRelationFilter
   checkpointProgress?: Prisma.UserCheckpointProgressListRelationFilter
+  blogs?: Prisma.BlogListRelationFilter
+  blogComments?: Prisma.BlogCommentListRelationFilter
+  blogLikes?: Prisma.BlogLikeListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -298,6 +301,9 @@ export type UserOrderByWithRelationInput = {
   favorites?: Prisma.FavoriteOrderByRelationAggregateInput
   guideReviews?: Prisma.GuideReviewOrderByRelationAggregateInput
   checkpointProgress?: Prisma.UserCheckpointProgressOrderByRelationAggregateInput
+  blogs?: Prisma.BlogOrderByRelationAggregateInput
+  blogComments?: Prisma.BlogCommentOrderByRelationAggregateInput
+  blogLikes?: Prisma.BlogLikeOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -328,6 +334,9 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   favorites?: Prisma.FavoriteListRelationFilter
   guideReviews?: Prisma.GuideReviewListRelationFilter
   checkpointProgress?: Prisma.UserCheckpointProgressListRelationFilter
+  blogs?: Prisma.BlogListRelationFilter
+  blogComments?: Prisma.BlogCommentListRelationFilter
+  blogLikes?: Prisma.BlogLikeListRelationFilter
 }, "id" | "email">
 
 export type UserOrderByWithAggregationInput = {
@@ -397,6 +406,9 @@ export type UserCreateInput = {
   favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -424,6 +436,9 @@ export type UserUncheckedCreateInput = {
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserUpdateInput = {
@@ -451,6 +466,9 @@ export type UserUpdateInput = {
   favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -478,6 +496,9 @@ export type UserUncheckedUpdateInput = {
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -653,6 +674,48 @@ export type UserUpdateOneRequiredWithoutAccountsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAccountsInput, Prisma.UserUpdateWithoutAccountsInput>, Prisma.UserUncheckedUpdateWithoutAccountsInput>
 }
 
+export type UserCreateNestedOneWithoutBlogCommentsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogCommentsInput, Prisma.UserUncheckedCreateWithoutBlogCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogCommentsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBlogCommentsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogCommentsInput, Prisma.UserUncheckedCreateWithoutBlogCommentsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogCommentsInput
+  upsert?: Prisma.UserUpsertWithoutBlogCommentsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBlogCommentsInput, Prisma.UserUpdateWithoutBlogCommentsInput>, Prisma.UserUncheckedUpdateWithoutBlogCommentsInput>
+}
+
+export type UserCreateNestedOneWithoutBlogLikesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogLikesInput, Prisma.UserUncheckedCreateWithoutBlogLikesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogLikesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBlogLikesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogLikesInput, Prisma.UserUncheckedCreateWithoutBlogLikesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogLikesInput
+  upsert?: Prisma.UserUpsertWithoutBlogLikesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBlogLikesInput, Prisma.UserUpdateWithoutBlogLikesInput>, Prisma.UserUncheckedUpdateWithoutBlogLikesInput>
+}
+
+export type UserCreateNestedOneWithoutBlogsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogsInput, Prisma.UserUncheckedCreateWithoutBlogsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutBlogsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutBlogsInput, Prisma.UserUncheckedCreateWithoutBlogsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutBlogsInput
+  upsert?: Prisma.UserUpsertWithoutBlogsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutBlogsInput, Prisma.UserUpdateWithoutBlogsInput>, Prisma.UserUncheckedUpdateWithoutBlogsInput>
+}
+
 export type UserCreateNestedOneWithoutCommentsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCommentsInput, Prisma.UserUncheckedCreateWithoutCommentsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCommentsInput
@@ -775,6 +838,9 @@ export type UserCreateWithoutSessionsInput = {
   favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateWithoutSessionsInput = {
@@ -801,6 +867,9 @@ export type UserUncheckedCreateWithoutSessionsInput = {
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserCreateOrConnectWithoutSessionsInput = {
@@ -843,6 +912,9 @@ export type UserUpdateWithoutSessionsInput = {
   favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -869,6 +941,9 @@ export type UserUncheckedUpdateWithoutSessionsInput = {
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type UserCreateWithoutAccountsInput = {
@@ -895,6 +970,9 @@ export type UserCreateWithoutAccountsInput = {
   favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateWithoutAccountsInput = {
@@ -921,6 +999,9 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserCreateOrConnectWithoutAccountsInput = {
@@ -963,6 +1044,9 @@ export type UserUpdateWithoutAccountsInput = {
   favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAccountsInput = {
@@ -989,6 +1073,405 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
+}
+
+export type UserCreateWithoutBlogCommentsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  profilePhoto?: string | null
+  role?: $Enums.MemberRole
+  status?: $Enums.MemberStatus
+  bio?: string | null
+  address?: string | null
+  gender?: $Enums.MemberGender | null
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  guides?: Prisma.TravelGuideCreateNestedManyWithoutMemberInput
+  votes?: Prisma.VoteCreateNestedManyWithoutMemberInput
+  comments?: Prisma.CommentCreateNestedManyWithoutMemberInput
+  purchases?: Prisma.PurchaseCreateNestedManyWithoutMemberInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
+  guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
+  checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
+}
+
+export type UserUncheckedCreateWithoutBlogCommentsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  profilePhoto?: string | null
+  role?: $Enums.MemberRole
+  status?: $Enums.MemberStatus
+  bio?: string | null
+  address?: string | null
+  gender?: $Enums.MemberGender | null
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  guides?: Prisma.TravelGuideUncheckedCreateNestedManyWithoutMemberInput
+  votes?: Prisma.VoteUncheckedCreateNestedManyWithoutMemberInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutMemberInput
+  purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutMemberInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
+  guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
+  checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
+}
+
+export type UserCreateOrConnectWithoutBlogCommentsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogCommentsInput, Prisma.UserUncheckedCreateWithoutBlogCommentsInput>
+}
+
+export type UserUpsertWithoutBlogCommentsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBlogCommentsInput, Prisma.UserUncheckedUpdateWithoutBlogCommentsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogCommentsInput, Prisma.UserUncheckedCreateWithoutBlogCommentsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBlogCommentsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBlogCommentsInput, Prisma.UserUncheckedUpdateWithoutBlogCommentsInput>
+}
+
+export type UserUpdateWithoutBlogCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumMemberRoleFieldUpdateOperationsInput | $Enums.MemberRole
+  status?: Prisma.EnumMemberStatusFieldUpdateOperationsInput | $Enums.MemberStatus
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumMemberGenderFieldUpdateOperationsInput | $Enums.MemberGender | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  guides?: Prisma.TravelGuideUpdateManyWithoutMemberNestedInput
+  votes?: Prisma.VoteUpdateManyWithoutMemberNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutMemberNestedInput
+  purchases?: Prisma.PurchaseUpdateManyWithoutMemberNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
+  guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
+  checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBlogCommentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumMemberRoleFieldUpdateOperationsInput | $Enums.MemberRole
+  status?: Prisma.EnumMemberStatusFieldUpdateOperationsInput | $Enums.MemberStatus
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumMemberGenderFieldUpdateOperationsInput | $Enums.MemberGender | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  guides?: Prisma.TravelGuideUncheckedUpdateManyWithoutMemberNestedInput
+  votes?: Prisma.VoteUncheckedUpdateManyWithoutMemberNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutMemberNestedInput
+  purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutMemberNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
+  guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
+  checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
+}
+
+export type UserCreateWithoutBlogLikesInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  profilePhoto?: string | null
+  role?: $Enums.MemberRole
+  status?: $Enums.MemberStatus
+  bio?: string | null
+  address?: string | null
+  gender?: $Enums.MemberGender | null
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  guides?: Prisma.TravelGuideCreateNestedManyWithoutMemberInput
+  votes?: Prisma.VoteCreateNestedManyWithoutMemberInput
+  comments?: Prisma.CommentCreateNestedManyWithoutMemberInput
+  purchases?: Prisma.PurchaseCreateNestedManyWithoutMemberInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
+  guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
+  checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+}
+
+export type UserUncheckedCreateWithoutBlogLikesInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  profilePhoto?: string | null
+  role?: $Enums.MemberRole
+  status?: $Enums.MemberStatus
+  bio?: string | null
+  address?: string | null
+  gender?: $Enums.MemberGender | null
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  guides?: Prisma.TravelGuideUncheckedCreateNestedManyWithoutMemberInput
+  votes?: Prisma.VoteUncheckedCreateNestedManyWithoutMemberInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutMemberInput
+  purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutMemberInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
+  guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
+  checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+}
+
+export type UserCreateOrConnectWithoutBlogLikesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogLikesInput, Prisma.UserUncheckedCreateWithoutBlogLikesInput>
+}
+
+export type UserUpsertWithoutBlogLikesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBlogLikesInput, Prisma.UserUncheckedUpdateWithoutBlogLikesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogLikesInput, Prisma.UserUncheckedCreateWithoutBlogLikesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBlogLikesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBlogLikesInput, Prisma.UserUncheckedUpdateWithoutBlogLikesInput>
+}
+
+export type UserUpdateWithoutBlogLikesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumMemberRoleFieldUpdateOperationsInput | $Enums.MemberRole
+  status?: Prisma.EnumMemberStatusFieldUpdateOperationsInput | $Enums.MemberStatus
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumMemberGenderFieldUpdateOperationsInput | $Enums.MemberGender | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  guides?: Prisma.TravelGuideUpdateManyWithoutMemberNestedInput
+  votes?: Prisma.VoteUpdateManyWithoutMemberNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutMemberNestedInput
+  purchases?: Prisma.PurchaseUpdateManyWithoutMemberNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
+  guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
+  checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBlogLikesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumMemberRoleFieldUpdateOperationsInput | $Enums.MemberRole
+  status?: Prisma.EnumMemberStatusFieldUpdateOperationsInput | $Enums.MemberStatus
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumMemberGenderFieldUpdateOperationsInput | $Enums.MemberGender | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  guides?: Prisma.TravelGuideUncheckedUpdateManyWithoutMemberNestedInput
+  votes?: Prisma.VoteUncheckedUpdateManyWithoutMemberNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutMemberNestedInput
+  purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutMemberNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
+  guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
+  checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+}
+
+export type UserCreateWithoutBlogsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  profilePhoto?: string | null
+  role?: $Enums.MemberRole
+  status?: $Enums.MemberStatus
+  bio?: string | null
+  address?: string | null
+  gender?: $Enums.MemberGender | null
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
+  guides?: Prisma.TravelGuideCreateNestedManyWithoutMemberInput
+  votes?: Prisma.VoteCreateNestedManyWithoutMemberInput
+  comments?: Prisma.CommentCreateNestedManyWithoutMemberInput
+  purchases?: Prisma.PurchaseCreateNestedManyWithoutMemberInput
+  favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
+  guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
+  checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
+}
+
+export type UserUncheckedCreateWithoutBlogsInput = {
+  id: string
+  name: string
+  email: string
+  emailVerified?: boolean
+  image?: string | null
+  profilePhoto?: string | null
+  role?: $Enums.MemberRole
+  status?: $Enums.MemberStatus
+  bio?: string | null
+  address?: string | null
+  gender?: $Enums.MemberGender | null
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  sessions?: Prisma.SessionUncheckedCreateNestedManyWithoutUserInput
+  accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
+  guides?: Prisma.TravelGuideUncheckedCreateNestedManyWithoutMemberInput
+  votes?: Prisma.VoteUncheckedCreateNestedManyWithoutMemberInput
+  comments?: Prisma.CommentUncheckedCreateNestedManyWithoutMemberInput
+  purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutMemberInput
+  favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
+  guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
+  checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
+}
+
+export type UserCreateOrConnectWithoutBlogsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogsInput, Prisma.UserUncheckedCreateWithoutBlogsInput>
+}
+
+export type UserUpsertWithoutBlogsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutBlogsInput, Prisma.UserUncheckedUpdateWithoutBlogsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutBlogsInput, Prisma.UserUncheckedCreateWithoutBlogsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutBlogsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutBlogsInput, Prisma.UserUncheckedUpdateWithoutBlogsInput>
+}
+
+export type UserUpdateWithoutBlogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumMemberRoleFieldUpdateOperationsInput | $Enums.MemberRole
+  status?: Prisma.EnumMemberStatusFieldUpdateOperationsInput | $Enums.MemberStatus
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumMemberGenderFieldUpdateOperationsInput | $Enums.MemberGender | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
+  guides?: Prisma.TravelGuideUpdateManyWithoutMemberNestedInput
+  votes?: Prisma.VoteUpdateManyWithoutMemberNestedInput
+  comments?: Prisma.CommentUpdateManyWithoutMemberNestedInput
+  purchases?: Prisma.PurchaseUpdateManyWithoutMemberNestedInput
+  favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
+  guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
+  checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
+}
+
+export type UserUncheckedUpdateWithoutBlogsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profilePhoto?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  role?: Prisma.EnumMemberRoleFieldUpdateOperationsInput | $Enums.MemberRole
+  status?: Prisma.EnumMemberStatusFieldUpdateOperationsInput | $Enums.MemberStatus
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumMemberGenderFieldUpdateOperationsInput | $Enums.MemberGender | null
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sessions?: Prisma.SessionUncheckedUpdateManyWithoutUserNestedInput
+  accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
+  guides?: Prisma.TravelGuideUncheckedUpdateManyWithoutMemberNestedInput
+  votes?: Prisma.VoteUncheckedUpdateManyWithoutMemberNestedInput
+  comments?: Prisma.CommentUncheckedUpdateManyWithoutMemberNestedInput
+  purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutMemberNestedInput
+  favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
+  guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
+  checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type UserCreateWithoutCommentsInput = {
@@ -1015,6 +1498,9 @@ export type UserCreateWithoutCommentsInput = {
   favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateWithoutCommentsInput = {
@@ -1041,6 +1527,9 @@ export type UserUncheckedCreateWithoutCommentsInput = {
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserCreateOrConnectWithoutCommentsInput = {
@@ -1083,6 +1572,9 @@ export type UserUpdateWithoutCommentsInput = {
   favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCommentsInput = {
@@ -1109,6 +1601,9 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type UserCreateWithoutFavoritesInput = {
@@ -1135,6 +1630,9 @@ export type UserCreateWithoutFavoritesInput = {
   purchases?: Prisma.PurchaseCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateWithoutFavoritesInput = {
@@ -1161,6 +1659,9 @@ export type UserUncheckedCreateWithoutFavoritesInput = {
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserCreateOrConnectWithoutFavoritesInput = {
@@ -1203,6 +1704,9 @@ export type UserUpdateWithoutFavoritesInput = {
   purchases?: Prisma.PurchaseUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateWithoutFavoritesInput = {
@@ -1229,6 +1733,9 @@ export type UserUncheckedUpdateWithoutFavoritesInput = {
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type UserCreateWithoutGuideReviewsInput = {
@@ -1255,6 +1762,9 @@ export type UserCreateWithoutGuideReviewsInput = {
   purchases?: Prisma.PurchaseCreateNestedManyWithoutMemberInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
   checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateWithoutGuideReviewsInput = {
@@ -1281,6 +1791,9 @@ export type UserUncheckedCreateWithoutGuideReviewsInput = {
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutMemberInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserCreateOrConnectWithoutGuideReviewsInput = {
@@ -1323,6 +1836,9 @@ export type UserUpdateWithoutGuideReviewsInput = {
   purchases?: Prisma.PurchaseUpdateManyWithoutMemberNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGuideReviewsInput = {
@@ -1349,6 +1865,9 @@ export type UserUncheckedUpdateWithoutGuideReviewsInput = {
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutMemberNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type UserCreateWithoutGuidesInput = {
@@ -1375,6 +1894,9 @@ export type UserCreateWithoutGuidesInput = {
   favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateWithoutGuidesInput = {
@@ -1401,6 +1923,9 @@ export type UserUncheckedCreateWithoutGuidesInput = {
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserCreateOrConnectWithoutGuidesInput = {
@@ -1443,6 +1968,9 @@ export type UserUpdateWithoutGuidesInput = {
   favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGuidesInput = {
@@ -1469,6 +1997,9 @@ export type UserUncheckedUpdateWithoutGuidesInput = {
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type UserCreateWithoutPurchasesInput = {
@@ -1495,6 +2026,9 @@ export type UserCreateWithoutPurchasesInput = {
   favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateWithoutPurchasesInput = {
@@ -1521,6 +2055,9 @@ export type UserUncheckedCreateWithoutPurchasesInput = {
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserCreateOrConnectWithoutPurchasesInput = {
@@ -1563,6 +2100,9 @@ export type UserUpdateWithoutPurchasesInput = {
   favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateWithoutPurchasesInput = {
@@ -1589,6 +2129,9 @@ export type UserUncheckedUpdateWithoutPurchasesInput = {
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type UserCreateWithoutCheckpointProgressInput = {
@@ -1615,6 +2158,9 @@ export type UserCreateWithoutCheckpointProgressInput = {
   purchases?: Prisma.PurchaseCreateNestedManyWithoutMemberInput
   favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateWithoutCheckpointProgressInput = {
@@ -1641,6 +2187,9 @@ export type UserUncheckedCreateWithoutCheckpointProgressInput = {
   purchases?: Prisma.PurchaseUncheckedCreateNestedManyWithoutMemberInput
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserCreateOrConnectWithoutCheckpointProgressInput = {
@@ -1683,6 +2232,9 @@ export type UserUpdateWithoutCheckpointProgressInput = {
   purchases?: Prisma.PurchaseUpdateManyWithoutMemberNestedInput
   favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCheckpointProgressInput = {
@@ -1709,6 +2261,9 @@ export type UserUncheckedUpdateWithoutCheckpointProgressInput = {
   purchases?: Prisma.PurchaseUncheckedUpdateManyWithoutMemberNestedInput
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 export type UserCreateWithoutVotesInput = {
@@ -1735,6 +2290,9 @@ export type UserCreateWithoutVotesInput = {
   favorites?: Prisma.FavoriteCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeCreateNestedManyWithoutMemberInput
 }
 
 export type UserUncheckedCreateWithoutVotesInput = {
@@ -1761,6 +2319,9 @@ export type UserUncheckedCreateWithoutVotesInput = {
   favorites?: Prisma.FavoriteUncheckedCreateNestedManyWithoutMemberInput
   guideReviews?: Prisma.GuideReviewUncheckedCreateNestedManyWithoutReviewerInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedCreateNestedManyWithoutUserInput
+  blogs?: Prisma.BlogUncheckedCreateNestedManyWithoutAuthorInput
+  blogComments?: Prisma.BlogCommentUncheckedCreateNestedManyWithoutMemberInput
+  blogLikes?: Prisma.BlogLikeUncheckedCreateNestedManyWithoutMemberInput
 }
 
 export type UserCreateOrConnectWithoutVotesInput = {
@@ -1803,6 +2364,9 @@ export type UserUpdateWithoutVotesInput = {
   favorites?: Prisma.FavoriteUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUpdateManyWithoutMemberNestedInput
 }
 
 export type UserUncheckedUpdateWithoutVotesInput = {
@@ -1829,6 +2393,9 @@ export type UserUncheckedUpdateWithoutVotesInput = {
   favorites?: Prisma.FavoriteUncheckedUpdateManyWithoutMemberNestedInput
   guideReviews?: Prisma.GuideReviewUncheckedUpdateManyWithoutReviewerNestedInput
   checkpointProgress?: Prisma.UserCheckpointProgressUncheckedUpdateManyWithoutUserNestedInput
+  blogs?: Prisma.BlogUncheckedUpdateManyWithoutAuthorNestedInput
+  blogComments?: Prisma.BlogCommentUncheckedUpdateManyWithoutMemberNestedInput
+  blogLikes?: Prisma.BlogLikeUncheckedUpdateManyWithoutMemberNestedInput
 }
 
 
@@ -1846,6 +2413,9 @@ export type UserCountOutputType = {
   favorites: number
   guideReviews: number
   checkpointProgress: number
+  blogs: number
+  blogComments: number
+  blogLikes: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1858,6 +2428,9 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   favorites?: boolean | UserCountOutputTypeCountFavoritesArgs
   guideReviews?: boolean | UserCountOutputTypeCountGuideReviewsArgs
   checkpointProgress?: boolean | UserCountOutputTypeCountCheckpointProgressArgs
+  blogs?: boolean | UserCountOutputTypeCountBlogsArgs
+  blogComments?: boolean | UserCountOutputTypeCountBlogCommentsArgs
+  blogLikes?: boolean | UserCountOutputTypeCountBlogLikesArgs
 }
 
 /**
@@ -1933,6 +2506,27 @@ export type UserCountOutputTypeCountCheckpointProgressArgs<ExtArgs extends runti
   where?: Prisma.UserCheckpointProgressWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBlogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BlogWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBlogCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BlogCommentWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountBlogLikesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.BlogLikeWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1959,6 +2553,9 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   favorites?: boolean | Prisma.User$favoritesArgs<ExtArgs>
   guideReviews?: boolean | Prisma.User$guideReviewsArgs<ExtArgs>
   checkpointProgress?: boolean | Prisma.User$checkpointProgressArgs<ExtArgs>
+  blogs?: boolean | Prisma.User$blogsArgs<ExtArgs>
+  blogComments?: boolean | Prisma.User$blogCommentsArgs<ExtArgs>
+  blogLikes?: boolean | Prisma.User$blogLikesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -2027,6 +2624,9 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   favorites?: boolean | Prisma.User$favoritesArgs<ExtArgs>
   guideReviews?: boolean | Prisma.User$guideReviewsArgs<ExtArgs>
   checkpointProgress?: boolean | Prisma.User$checkpointProgressArgs<ExtArgs>
+  blogs?: boolean | Prisma.User$blogsArgs<ExtArgs>
+  blogComments?: boolean | Prisma.User$blogCommentsArgs<ExtArgs>
+  blogLikes?: boolean | Prisma.User$blogLikesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -2044,6 +2644,9 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     favorites: Prisma.$FavoritePayload<ExtArgs>[]
     guideReviews: Prisma.$GuideReviewPayload<ExtArgs>[]
     checkpointProgress: Prisma.$UserCheckpointProgressPayload<ExtArgs>[]
+    blogs: Prisma.$BlogPayload<ExtArgs>[]
+    blogComments: Prisma.$BlogCommentPayload<ExtArgs>[]
+    blogLikes: Prisma.$BlogLikePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2464,6 +3067,9 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   favorites<T extends Prisma.User$favoritesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$favoritesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$FavoritePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   guideReviews<T extends Prisma.User$guideReviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$guideReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GuideReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   checkpointProgress<T extends Prisma.User$checkpointProgressArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$checkpointProgressArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserCheckpointProgressPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  blogs<T extends Prisma.User$blogsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blogsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  blogComments<T extends Prisma.User$blogCommentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blogCommentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogCommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  blogLikes<T extends Prisma.User$blogLikesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$blogLikesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BlogLikePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3114,6 +3720,78 @@ export type User$checkpointProgressArgs<ExtArgs extends runtime.Types.Extensions
   take?: number
   skip?: number
   distinct?: Prisma.UserCheckpointProgressScalarFieldEnum | Prisma.UserCheckpointProgressScalarFieldEnum[]
+}
+
+/**
+ * User.blogs
+ */
+export type User$blogsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Blog
+   */
+  select?: Prisma.BlogSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Blog
+   */
+  omit?: Prisma.BlogOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BlogInclude<ExtArgs> | null
+  where?: Prisma.BlogWhereInput
+  orderBy?: Prisma.BlogOrderByWithRelationInput | Prisma.BlogOrderByWithRelationInput[]
+  cursor?: Prisma.BlogWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BlogScalarFieldEnum | Prisma.BlogScalarFieldEnum[]
+}
+
+/**
+ * User.blogComments
+ */
+export type User$blogCommentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BlogComment
+   */
+  select?: Prisma.BlogCommentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BlogComment
+   */
+  omit?: Prisma.BlogCommentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BlogCommentInclude<ExtArgs> | null
+  where?: Prisma.BlogCommentWhereInput
+  orderBy?: Prisma.BlogCommentOrderByWithRelationInput | Prisma.BlogCommentOrderByWithRelationInput[]
+  cursor?: Prisma.BlogCommentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BlogCommentScalarFieldEnum | Prisma.BlogCommentScalarFieldEnum[]
+}
+
+/**
+ * User.blogLikes
+ */
+export type User$blogLikesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BlogLike
+   */
+  select?: Prisma.BlogLikeSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BlogLike
+   */
+  omit?: Prisma.BlogLikeOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BlogLikeInclude<ExtArgs> | null
+  where?: Prisma.BlogLikeWhereInput
+  orderBy?: Prisma.BlogLikeOrderByWithRelationInput | Prisma.BlogLikeOrderByWithRelationInput[]
+  cursor?: Prisma.BlogLikeWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.BlogLikeScalarFieldEnum | Prisma.BlogLikeScalarFieldEnum[]
 }
 
 /**

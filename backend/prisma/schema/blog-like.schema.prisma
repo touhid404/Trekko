@@ -1,0 +1,17 @@
+// BlogLike model - Simple like toggle on blog posts
+model BlogLike {
+    id        String   @id @default(cuid())
+    blogId    String
+    memberId  String // FK to Better Auth user
+    createdAt DateTime @default(now())
+
+    // Relations
+    member User @relation(fields: [memberId], references: [id], onDelete: Cascade)
+    blog   Blog @relation(fields: [blogId], references: [id], onDelete: Cascade)
+
+    // Ensure one like per user per blog
+    @@unique([memberId, blogId])
+    @@index([blogId])
+    @@index([memberId])
+    @@map("blog_likes")
+}

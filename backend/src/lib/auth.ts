@@ -15,19 +15,23 @@ export const auth = betterAuth({
   secret: envVeriables.BETTER_AUTH_SECRET,
   trustedOrigins: [envVeriables.FRONTEND_URL!],
 
-  socialProviders: {
-    google: {
-      clientId: envVeriables.GOOGLE_CLIENT_ID as string,
-      clientSecret: envVeriables.GOOGLE_CLIENT_SECRET as string,
-      mapProfileToUser: () => {
-        return {
-          role: MemberRole.MEMBER,
-          isDeleted: false,
-          deletedAt: null,
-        };
-      },
-    },
-  },
+  // socialProviders: {
+    ...(envVeriables.GOOGLE_CLIENT_ID && envVeriables.GOOGLE_CLIENT_SECRET
+      ? {
+          google: {
+            clientId: envVeriables.GOOGLE_CLIENT_ID,
+            clientSecret: envVeriables.GOOGLE_CLIENT_SECRET,
+            mapProfileToUser: () => {
+              return {
+                role: MemberRole.MEMBER,
+                isDeleted: false,
+                deletedAt: null,
+              };
+            },
+          },
+        }
+      : {}),
+  // },
 
   redirects: {
     signIn: `${envVeriables.BETTER_AUTH_URL}/api/v1/auth/google/success`,
