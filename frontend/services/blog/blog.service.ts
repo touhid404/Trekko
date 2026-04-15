@@ -43,6 +43,9 @@ const blogService = {
     try {
       const cookieHeader = await refreshCookie()
 
+      const controller = new AbortController()
+      const timeoutId = setTimeout(() => controller.abort(), 10000)
+
       const response = await fetch(
         `${API_BASE_URL}/blogs?page=${page}&limit=${limit}`,
         {
@@ -52,8 +55,10 @@ const blogService = {
             ...(cookieHeader ? { Cookie: cookieHeader } : {}),
           },
           next: { revalidate: 5, tags: ["blogs"] },
+          signal: controller.signal,
         }
       )
+      clearTimeout(timeoutId)
 
       if (!response.ok) {
         return { success: false, message: "Failed to fetch blogs", data: [] }

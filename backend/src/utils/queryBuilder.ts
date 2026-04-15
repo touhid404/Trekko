@@ -444,7 +444,8 @@ export class QueryBuilder<
       delete findManyArgs.select;
     }
 
-    const countArgs: Record<string, unknown> = {};
+    // Optimization: Sanitize countArgs to only include 'where' if it's not empty
+    const countArgs: any = {};
     if (
       this.countQuery.where &&
       Object.keys(this.countQuery.where as Record<string, unknown>).length > 0
@@ -453,11 +454,10 @@ export class QueryBuilder<
     }
 
     try {
+      // Execute both queries in parallel for better performance
       const [total, data] = await Promise.all([
-        this.model.count(countArgs as any),
-        this.model.findMany(
-          findManyArgs as Parameters<typeof this.model.findMany>[0],
-        ),
+        this.model.count(Object.keys(countArgs).length > 0 ? countArgs : undefined),
+        this.model.findMany(findManyArgs as any),
       ]);
 
       const totalPages = Math.ceil(total / this.limit);

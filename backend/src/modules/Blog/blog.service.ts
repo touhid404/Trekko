@@ -1,7 +1,10 @@
 import { prisma } from "../../lib/prisma";
 import AppError from "../../errors/AppError";
 import { Blog, CreateBlogPayload, UpdateBlogPayload } from "./blog.interface";
-import { MemberRole } from "../../../prisma/generated/prisma/enums";
+import { IQueryParams, IQueryResult } from "../../interface/queryBuilder.interface";
+import { QueryBuilder } from "../../utils/queryBuilder";
+import { SearchableFields, FilterableFields } from "./blog.constant";
+import { MemberRole, Prisma } from "../../../prisma/generated/prisma/client";
 
 const create = async (
   authorId: string,
@@ -26,52 +29,58 @@ const create = async (
 };
 
 const getAll = async (
-  page: number = 1,
-  limit: number = 10,
+  query: IQueryParams = {},
   userId?: string,
-) => {
-  const skip = (page - 1) * limit;
+): Promise<IQueryResult<Blog>> => {
+  const queryBuilder = new QueryBuilder<
+    Blog,
+    Prisma.BlogWhereInput,
+    Prisma.BlogInclude
+  >(prisma.blog, query, {
+    searchableFields: SearchableFields,
+    filterableFields: FilterableFields,
+  });
 
-  const [blogs, total] = await Promise.all([
-    prisma.blog.findMany({
-      where: { isDeleted: false },
-      include: {
-        author: {
-          select: { id: true, name: true, email: true, profilePhoto: true },
-        },
-        _count: { select: { likes: true, comments: true } },
-        ...(userId
-          ? {
-              likes: {
-                where: { memberId: userId },
-                select: { id: true },
-              },
-            }
-          : {}),
+  queryBuilder.where({ isDeleted: false });
+
+  const results = await queryBuilder
+    .search()
+    .filter()
+    .include({
+      author: {
+        select: { id: true, name: true, email: true, profilePhoto: true },
       },
-      orderBy: { createdAt: "desc" },
-      skip,
-      take: limit,
-    }),
-    prisma.blog.count({ where: { isDeleted: false } }),
-  ]);
+      _count: { select: { likes: true, comments: true } },
+      ...(userId
+        ? {
+            likes: {
+              where: { memberId: userId },
+              select: { id: true },
+            },
+          }
+        : {}),
+    })
+    .paginate()
+    .sort()
+    .fields()
+    .execute();
 
-  // Map to include `isLikedByMe`
-  const data = blogs.map((blog) => ({
-    ...blog,
-    isLikedByMe: userId ? (blog as any).likes?.length > 0 : false,
-    likes: undefined, // Don't expose raw likes array
+  // Map to include `isLikedByMe` and sanitize output
+  results.data = results.data.map((blog: any) => ({
+    id: blog.id,
+    authorId: blog.authorId,
+    title: blog.title,
+    content: blog.content,
+    coverImage: blog.coverImage,
+    createdAt: blog.createdAt,
+    updatedAt: blog.updatedAt,
+    author: blog.author,
+    _count: blog._count,
+    isDeleted: blog.isDeleted,
+    isLikedByMe: userId ? blog.likes?.length > 0 : false,
   }));
 
-  return {
-    data,
-    meta: {
-      page,
-      limit,
-      total,
-      totalPages: Math.ceil(total / limit),
-    },
-  };
+  return results;
 };
 
 const getById = async (id: string, userId?: string) => {

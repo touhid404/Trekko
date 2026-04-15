@@ -14,17 +14,12 @@ const create = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getAll = catchAsync(async (req: Request, res: Response) => {
-  const page = parseInt(req.query.page as string) || 1;
-  const limit = parseInt(req.query.limit as string) || 10;
   const userId = req.user?.id;
-
-  const result = await BlogService.getAll(page, limit, userId);
-
+  const data = await BlogService.getAll(req.query as any, userId);
   res.status(200).json({
     success: true,
     message: "Blogs retrieved successfully",
-    data: result.data,
-    meta: result.meta,
+    data,
   });
 });
 

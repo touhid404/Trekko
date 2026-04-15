@@ -7,6 +7,7 @@ import { toast } from "sonner"
 import { toggleBlogLikeAction, deleteBlogAction, updateBlogAction } from "@/actions/blog/blogActions"
 import { useRouter } from "next/navigation"
 import BlogCommentSection from "./BlogCommentSection"
+import blogService from "@/services/blog/blog.service"
 
 interface BlogComment {
   id: string
@@ -54,12 +55,34 @@ export default function BlogCard({ blog, comments, currentUserId }: Props) {
   const [likeCount, setLikeCount] = useState(blog._count.likes)
   const [isLiking, setIsLiking] = useState(false)
   const [showComments, setShowComments] = useState(false)
+  const [blogComments, setBlogComments] = useState<BlogComment[]>(comments || [])
+  const [isLoadingComments, setIsLoadingComments] = useState(false)
   const [showMenu, setShowMenu] = useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const [editTitle, setEditTitle] = useState(blog.title)
   const [editContent, setEditContent] = useState(blog.content)
   const [isUpdating, setIsUpdating] = useState(false)
   const router = useRouter()
+
+  const handleToggleComments = async () => {
+    const nextShowComments = !showComments
+    setShowComments(nextShowComments)
+
+    // Load comments if they haven't been loaded yet
+    if (nextShowComments && blogComments.length === 0 && blog._count.comments > 0) {
+      setIsLoadingComments(true)
+      try {
+        const result = await blogService.getComments(blog.id)
+        if (result.success) {
+          setBlogComments(result.data || [])
+        }
+      } catch (err) {
+        console.error("Failed to load comments:", err)
+      } finally {
+        setIsLoadingComments(false)
+      }
+    }
+  }
 
   const isOwner = currentUserId === blog.authorId
 
@@ -272,9 +295,12 @@ export default function BlogCard({ blog, comments, currentUserId }: Props) {
           </div>
           {blog._count.comments > 0 && (
             <button
-              onClick={() => setShowComments(!showComments)}
-              className="hover:underline"
+              onClick={handleToggleComments}
+              className="hover:underline flex items-center gap-1"
             >
+              {isLoadingComments ? (
+                <span className="h-3 w-3 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600" />
+              ) : null}
               {blog._count.comments} comment{blog._count.comments !== 1 ? "s" : ""}
             </button>
           )}
@@ -298,7 +324,7 @@ export default function BlogCard({ blog, comments, currentUserId }: Props) {
         </button>
 
         <button
-          onClick={() => setShowComments(!showComments)}
+          onClick={handleToggleComments}
           className="flex flex-1 items-center justify-center gap-2 border-l border-gray-100 py-3 text-sm font-semibold text-gray-500 transition-colors hover:bg-gray-50 hover:text-gray-700"
         >
           <MessageCircle className="h-[18px] w-[18px]" />
@@ -310,7 +336,7 @@ export default function BlogCard({ blog, comments, currentUserId }: Props) {
       {showComments && (
         <BlogCommentSection
           blogId={blog.id}
-          comments={comments}
+          comments={blogComments}
           currentUserId={currentUserId}
         />
       )}
