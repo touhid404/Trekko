@@ -454,13 +454,39 @@ export class QueryBuilder<
     }
 
     try {
-      // Execute both queries in parallel for better performance
-      const [total, data] = await Promise.all([
-        this.model.count(Object.keys(countArgs).length > 0 ? countArgs : undefined),
-        this.model.findMany(findManyArgs as any),
-      ]);
+      const startTime = Date.now()
 
-      const totalPages = Math.ceil(total / this.limit);
+      // Execute both queries in parallel for better performance
+      const [totalResult, dataResult] = await Promise.allSettled([
+        this.model.count(
+          Object.keys(countArgs).length > 0 ? countArgs : undefined,
+        ),
+        this.model.findMany(findManyArgs as any),
+      ])
+
+      const endTime = Date.now()
+      const totalDuration = endTime - startTime
+
+      if (totalResult.status === "rejected") {
+        console.error("QueryBuilder Count Error:", totalResult.reason)
+        throw new Error(`Count failed: ${totalResult.reason.message}`)
+      }
+
+      if (dataResult.status === "rejected") {
+        console.error("QueryBuilder findMany Error Details:", {
+          message: dataResult.reason.message,
+          code: dataResult.reason.code,
+          meta: dataResult.reason.meta,
+          clientVersion: dataResult.reason.clientVersion,
+        })
+        throw new Error(`findMany failed: ${dataResult.reason.message}`)
+      }
+
+      const total = totalResult.value
+      const data = dataResult.value
+
+
+      const totalPages = Math.ceil(total / this.limit)
 
       return {
         data: data as T[],
@@ -470,12 +496,13 @@ export class QueryBuilder<
           total,
           totalPages,
         },
-      };
+      }
     } catch (e: any) {
-      console.error("QueryBuilder Execute Error:", e.message);
-      console.error("countArgs:", JSON.stringify(countArgs, null, 2));
-      console.error("findManyArgs:", JSON.stringify(findManyArgs, null, 2));
-      throw e;
+      // Final catch for safety
+      if (!e.message.includes("failed:")) {
+        console.error("QueryBuilder Execute Fatal Error:", e)
+      }
+      throw e
     }
   }
 

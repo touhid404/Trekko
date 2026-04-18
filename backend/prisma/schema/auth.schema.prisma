@@ -25,9 +25,6 @@ model User {
     favorites          Favorite[]
     guideReviews       GuideReview[]
     checkpointProgress UserCheckpointProgress[]
-    blogs              Blog[]
-    blogComments       BlogComment[]
-    blogLikes          BlogLike[]
 
     @@unique([email])
     @@map("member")

@@ -28,5 +28,6 @@ model TravelGuide {
 
     @@index([memberId])
     @@index([categoryId])
+    @@index([isDeleted, status, createdAt(sort: Desc)])
     @@map("travel_guides")
 }

@@ -36,7 +36,7 @@ export default function DashboardNavberContent({
     }
   }, [])
   return (
-    <div className="flex h-16 items-center justify-between gap-4 border-b border-gray-100 bg-[#f9f9f9]/50 px-4 backdrop-blur-sm md:px-8">
+    <div className="glass-effect flex h-16 items-center justify-between gap-4 border-b border-gray-100 px-4 md:px-8">
       {/* Mobile Menu Toggle Button And Menu */}
       <Sheet open={isOpen && isMobile} onOpenChange={setIsOpen}>
         <SheetTrigger asChild className="md:hidden">
@@ -56,15 +56,20 @@ export default function DashboardNavberContent({
 
       {/* Breadcrumb or Empty flexible spacer */}
       <div className="flex flex-1 items-center">
-        <h2 className="hidden text-sm font-bold text-gray-900 md:block">
-          Welcome back, {userInfo?.name?.split(" ")[0] || "User"}!
-        </h2>
+        <div className="group hidden items-center gap-2 md:flex">
+          <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+          <h2 className="text-sm font-black tracking-tight text-gray-900">
+            Hi, <span className="text-primary">{userInfo?.name?.split(" ")[0] || "Traveler"}</span>! 👋
+          </h2>
+        </div>
       </div>
 
       {/* Right side action - Icons container */}
       <div className="flex items-center gap-4">
         {/* user dropdown */}
-        <UserDropdown userInfo={userInfo}></UserDropdown>
+        <div className="rounded-full p-0.5 ring-1 ring-gray-900/5 transition-all hover:ring-primary/30">
+          <UserDropdown userInfo={userInfo}></UserDropdown>
+        </div>
       </div>
     </div>
   )
