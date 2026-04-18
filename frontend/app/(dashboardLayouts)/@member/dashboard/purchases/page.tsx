@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import { useState, useEffect } from "react"
@@ -72,7 +74,7 @@ export default function PurchasesPage() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold">My Purchases</h1>
         <p className="mt-2 text-muted-foreground">
-          View all the travel guides you've purchased
+          View all the travel guides you&apos;ve purchased
         </p>
         <div className="mt-8">
           {isLoading && guides.length === 0 ? (

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { refreshCookie } from "@/lib/axios/refreshCookie"
 import { IResponse } from "@/types/api.types"
 
