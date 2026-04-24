@@ -6,7 +6,7 @@ import { GuidesFilters } from "@/components/modules/member/guides-filters"
 import { Pagination } from "@/components/modules/member/guides-pagination"
 import travelGuideServices from "@/services/travelGuide/travelGuide.service"
 import { toast } from "sonner"
-import { Loader2 } from "lucide-react"
+import { Loader2, Search } from "lucide-react"
 import { useSearchParams, useRouter } from "next/navigation"
 
 interface Guide {
@@ -175,78 +175,75 @@ export function GuidesList({ initialData }: GuidesListProps) {
   }
 
   return (
-    <>
-      {/* Count Info */}
-      {total > 0 && (
-        <p className="mb-4 text-sm text-muted-foreground">
-          Showing {guides.length > 0 ? (currentPage - 1) * 9 + 1 : 0} to{" "}
-          {Math.min(currentPage * 9, total)} of {total} guides
-        </p>
-      )}
+    <div className="min-h-screen bg-background pb-20 pt-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Filters */}
+        <GuidesFilters
+          onSearch={handleSearch}
+          onSort={handleSort}
+          onCategoryFilter={handleCategoryFilter}
+          onPaidFilter={handlePaidFilter}
+          onStatusFilter={handleStatusFilter}
+          onPriceRangeFilter={handlePriceRangeFilter}
+          onClear={handleClearFilters}
+          currentSearch={searchTerm}
+          currentSort={sort || "all"}
+          currentCategory={categoryId || "all"}
+          currentPaid={paid || "all"}
+          currentStatus={status || "all"}
+          currentMinPrice={minPrice}
+          currentMaxPrice={maxPrice}
+        />
 
-      {/* Filters */}
-      <GuidesFilters
-        onSearch={handleSearch}
-        onSort={handleSort}
-        onCategoryFilter={handleCategoryFilter}
-        onPaidFilter={handlePaidFilter}
-        onStatusFilter={handleStatusFilter}
-        onPriceRangeFilter={handlePriceRangeFilter}
-        onClear={handleClearFilters}
-        currentSearch={searchTerm}
-        currentSort={sort || "all"}
-        currentCategory={categoryId || "all"}
-        currentPaid={paid || "all"}
-        currentStatus={status || "all"}
-        currentMinPrice={minPrice}
-        currentMaxPrice={maxPrice}
-      />
-
-      {/* Loading State */}
-      {loading && (
-        <div className="flex h-64 items-center justify-center">
-          <div className="flex flex-col items-center gap-2">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p className="text-muted-foreground">Loading guides...</p>
+        {/* Loading State */}
+        {loading && (
+          <div className="flex flex-col items-center justify-center py-32">
+            <Loader2 className="h-8 w-8 animate-spin text-emerald-500" />
+            <p className="mt-4 text-sm font-bold text-gray-400 uppercase tracking-widest">
+              Loading Guides...
+            </p>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* No Results */}
-      {!loading && guides.length === 0 && (
-        <div className="rounded-lg border bg-card p-12 text-center">
-          <p className="text-lg font-medium">No guides found</p>
-          <p className="mt-2 text-muted-foreground">
-            Try adjusting your filters or search terms
-          </p>
-        </div>
-      )}
+        {/* No Results */}
+        {!loading && guides.length === 0 && (
+          <div className="rounded-[2rem] bg-white p-24 text-center shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100">
+            <div className="mx-auto mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-gray-50 text-gray-400">
+              <Search className="h-8 w-8" />
+            </div>
+            <p className="text-xl font-bold tracking-tight text-gray-900">No Guides Found</p>
+            <p className="mt-2 text-sm text-gray-500">
+              Try adjusting your search filters to find what you&apos;re looking for.
+            </p>
+          </div>
+        )}
 
-      {/* Guides Grid */}
-      {!loading && guides.length > 0 && (
-        <div className="mb-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {guides.map((guide) => (
-            <GuideCard key={guide.id} guide={guide} />
-          ))}
-        </div>
-      )}
+        {/* Guides Grid */}
+        {!loading && guides.length > 0 && (
+          <div className="mb-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {guides.map((guide) => (
+              <GuideCard key={guide.id} guide={guide} />
+            ))}
+          </div>
+        )}
 
-      {/* Pagination */}
-      {!loading && totalPages > 0 && (
-        <div className="mb-8 flex justify-center">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages || 1}
-            onPageChange={(page) => {
-              const normalized = Math.max(1, Math.min(page, totalPages || 1))
-              setCurrentPage(normalized)
-              const params = new URLSearchParams(searchParams)
-              params.set("page", normalized.toString())
-              router.replace(`?${params.toString()}`, { scroll: false })
-            }}
-          />
-        </div>
-      )}
-    </>
+        {/* Pagination */}
+        {!loading && totalPages > 0 && (
+          <div className="flex justify-center mt-16">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages || 1}
+              onPageChange={(page) => {
+                const normalized = Math.max(1, Math.min(page, totalPages || 1))
+                setCurrentPage(normalized)
+                const params = new URLSearchParams(searchParams)
+                params.set("page", normalized.toString())
+                router.replace(`?${params.toString()}`, { scroll: false })
+              }}
+            />
+          </div>
+        )}
+      </div>
+    </div>
   )
 }

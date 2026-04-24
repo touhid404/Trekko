@@ -70,11 +70,13 @@ export default function PurchasesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold">My Purchases</h1>
-        <p className="mt-2 text-muted-foreground">
-          View all the travel guides you&apos;ve purchased
+    <div className="min-h-screen bg-background pb-32">
+      <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+        <h1 className="text-5xl font-black uppercase tracking-tighter text-foreground">
+          PURCHASES.
+        </h1>
+        <p className="mt-4 text-[11px] font-black uppercase tracking-[0.4em] text-foreground opacity-30">
+          A COMPREHENSIVE REGISTRY OF YOUR ACQUIRED REPOSITORIES
         </p>
         <div className="mt-8">
           {isLoading && guides.length === 0 ? (

@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { Search, X } from "lucide-react"
-import { axiosInstance, httpClient } from "@/lib/axios/httpClient"
+import { httpClient } from "@/lib/axios/httpClient"
 
 interface GuidesFiltersProps {
   onSearch: (search: string) => void
@@ -115,130 +115,124 @@ export function GuidesFilters({
 
   const handleClearFilters = () => {
     setSearchValue("")
-    setStatusValue("all")
-    setMinPrice("")
-    setMaxPrice("")
-
     onClear?.()
   }
 
   return (
-    <div className="mb-8 space-y-4 rounded-lg border bg-card p-4">
-      {/* Search Bar */}
-      <div className="flex gap-2">
-        <div className="relative flex-1">
-          <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+    <div className="mb-12 space-y-8 rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
+      {/* Search Header */}
+      <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+            Find Your Next Adventure
+          </h2>
+          <p className="mt-2 max-w-2xl text-sm text-gray-500">
+            Browse our verified collection of premium travel itineraries and local experiences.
+          </p>
+        </div>
+        
+        <div className="relative flex-1 max-w-lg group">
+          <Search className="absolute top-1/2 left-4 h-5 w-5 -translate-y-1/2 text-gray-400 transition-colors group-focus-within:text-emerald-500" />
           <Input
-            placeholder="Search guides by title, keyword, or description..."
+            placeholder="Search destinations or guides..."
             value={searchValue}
             onChange={(e) => handleSearchChange(e.target.value)}
-            className="pl-10"
+            className="h-14 pl-12 pr-10 rounded-2xl border-gray-200 bg-gray-50 text-sm font-semibold text-gray-900 transition-all focus-visible:ring-0 focus-visible:border-gray-300 focus-visible:bg-white placeholder:text-gray-400 shadow-sm"
           />
+          {searchValue && (
+            <button
+              onClick={() => handleSearchChange("")}
+              className="absolute top-1/2 right-4 -translate-y-1/2 rounded-full p-1 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          )}
         </div>
-        {searchValue && (
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => handleSearchChange("")}
-          >
-            <X className="h-4 w-4" />
-          </Button>
-        )}
       </div>
 
       {/* Filters Row */}
-      <div className="grid gap-4 md:grid-cols-5">
-        {/* Sort */}
-        {/* <Select value={currentSort} onValueChange={onSort}>
-          <SelectTrigger>
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            <SelectItem value="-createdAt">Recent</SelectItem>
-            <SelectItem value="-voteCount">Top Voted</SelectItem>
-            <SelectItem value="-commentCount">Most Commented</SelectItem>
-          </SelectContent>
-        </Select> */}
-
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {/* Category Filter */}
-        <Select value={currentCategory} onValueChange={onCategoryFilter}>
-          <SelectTrigger>
-            <SelectValue placeholder="Category" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All Categories</SelectItem>
-            {categories.map((cat) => (
-              <SelectItem key={cat.id} value={cat.id}>
-                {cat.title}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-
-        {/* Payment Filter */}
-        <Select value={currentPaid} onValueChange={onPaidFilter}>
-          <SelectTrigger>
-            <SelectValue placeholder="Payment" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            <SelectItem value="false">Free</SelectItem>
-            <SelectItem value="true">Paid</SelectItem>
-          </SelectContent>
-        </Select>
-
-        {/* Status Filter */}
-        {/* <Select value={statusValue} onValueChange={handleStatusChange}>
-          <SelectTrigger>
-            <SelectValue placeholder="Status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">All</SelectItem>
-            <SelectItem value="DRAFT">Draft</SelectItem>
-            <SelectItem value="UNDER_REVIEW">Under Review</SelectItem>
-            <SelectItem value="APPROVED">Approved</SelectItem>
-            <SelectItem value="REJECTED">Rejected</SelectItem>
-          </SelectContent>
-        </Select> */}
-
-        {/* Price Range Container */}
-        <div className="flex gap-2">
-          <Input
-            type="number"
-            placeholder="Min Price"
-            value={minPrice}
-            onChange={(e) => handlePriceRangeChange(e.target.value, maxPrice)}
-            min="0"
-            className="flex-1"
-          />
-          <Input
-            type="number"
-            placeholder="Max Price"
-            value={maxPrice}
-            onChange={(e) => handlePriceRangeChange(minPrice, e.target.value)}
-            min="0"
-            className="flex-1"
-          />
+        <div className="space-y-2">
+          <label className="text-xs font-bold text-gray-500 ml-1">Genre</label>
+          <Select value={currentCategory} onValueChange={onCategoryFilter}>
+            <SelectTrigger className="h-12 rounded-2xl border-gray-200 bg-gray-50/50 text-sm font-semibold text-gray-900 focus:ring-0 transition-colors hover:bg-gray-50">
+              <SelectValue placeholder="All Categories" />
+            </SelectTrigger>
+            <SelectContent className="rounded-2xl border-gray-100 bg-white text-sm font-semibold text-gray-900 shadow-lg">
+              <SelectItem value="all">Every Category</SelectItem>
+              {categories.map((cat) => (
+                <SelectItem key={cat.id} value={cat.id}>
+                  {cat.title}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
-        {/* Clear Filters */}
-        {(searchValue ||
-          currentSort !== "all" ||
-          currentCategory !== "all" ||
-          currentPaid !== "all" ||
-          statusValue !== "all" ||
-          currentMinPrice ||
-          currentMaxPrice) && (
-            <Button
-              variant="outline"
-              onClick={handleClearFilters}
-              className="gap-2"
-            >
-              <X className="h-4 w-4" />
-              Clear Filters
-            </Button>
-          )}
+        {/* Access Filter */}
+        <div className="space-y-2">
+          <label className="text-xs font-bold text-gray-500 ml-1">Access Level</label>
+          <Select value={currentPaid} onValueChange={onPaidFilter}>
+            <SelectTrigger className="h-12 rounded-2xl border-gray-200 bg-gray-50/50 text-sm font-semibold text-gray-900 focus:ring-0 transition-colors hover:bg-gray-50">
+              <SelectValue placeholder="Any Access" />
+            </SelectTrigger>
+            <SelectContent className="rounded-2xl border-gray-100 bg-white text-sm font-semibold text-gray-900 shadow-lg">
+              <SelectItem value="all">Any Access</SelectItem>
+              <SelectItem value="false">Free Entries</SelectItem>
+              <SelectItem value="true">Premium Entries</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Price Ranger */}
+        <div className="space-y-2">
+          <label className="text-xs font-bold text-gray-500 ml-1">Credits Range</label>
+          <div className="flex gap-2">
+            <div className="relative flex-1">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-400">৳</span>
+              <Input
+                type="number"
+                placeholder="Min"
+                value={minPrice}
+                onChange={(e) => handlePriceRangeChange(e.target.value, maxPrice)}
+                className="h-12 pl-7 rounded-2xl border-gray-200 bg-gray-50/50 text-sm font-semibold text-gray-900 transition-colors focus-visible:ring-0 focus-visible:bg-white hover:bg-gray-50"
+              />
+            </div>
+            <div className="relative flex-1">
+              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-400">৳</span>
+              <Input
+                type="number"
+                placeholder="Max"
+                value={maxPrice}
+                onChange={(e) => handlePriceRangeChange(minPrice, e.target.value)}
+                className="h-12 pl-7 rounded-2xl border-gray-200 bg-gray-50/50 text-sm font-semibold text-gray-900 transition-colors focus-visible:ring-0 focus-visible:bg-white hover:bg-gray-50"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Reset Actions */}
+        <div className="flex items-end">
+          {(searchValue ||
+            currentSort !== "all" ||
+            currentCategory !== "all" ||
+            currentPaid !== "all" ||
+            statusValue !== "all" ||
+            currentMinPrice ||
+            currentMaxPrice) ? (
+              <Button
+                variant="outline"
+                onClick={handleClearFilters}
+                className="h-12 w-full gap-2 rounded-2xl border border-gray-200 bg-white text-sm font-bold text-gray-900 transition-colors hover:bg-gray-50"
+              >
+                <X className="h-4 w-4" />
+                Reset filters
+              </Button>
+            ) : (
+              <div className="h-12 w-full" /> 
+            )}
+        </div>
       </div>
     </div>
   )

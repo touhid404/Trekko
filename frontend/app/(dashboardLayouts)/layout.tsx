@@ -29,9 +29,9 @@ export default async function DashboardLayout({
         <DashboardNavber></DashboardNavber>
         {/* <DashboardNavbar /> */}
         {/* Dashboard Content */}
-        <main className="flex-1 overflow-y-auto bg-muted/10 p-4 md:p-6 lg:p-0">
+        <main className="flex-1 overflow-y-auto bg-background">
           {/* Render children (commonProtected routes) first, then role-based slots */}
-          <main className="flex-1 overflow-y-auto bg-muted/10 p-4 md:p-6 lg:p-0">
+          <main className="flex-1 overflow-y-auto bg-background px-8 py-10">
             {/* 1. First render common protected routes */}
 
             {/* 2. Then render role-based content */}

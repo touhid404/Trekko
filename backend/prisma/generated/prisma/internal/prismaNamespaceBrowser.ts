@@ -55,9 +55,6 @@ export const ModelName = {
   Session: 'Session',
   Account: 'Account',
   Verification: 'Verification',
-  BlogComment: 'BlogComment',
-  BlogLike: 'BlogLike',
-  Blog: 'Blog',
   Category: 'Category',
   GuideCheckpoint: 'GuideCheckpoint',
   Comment: 'Comment',
@@ -151,46 +148,6 @@ export const VerificationScalarFieldEnum = {
 } as const
 
 export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
-
-
-export const BlogCommentScalarFieldEnum = {
-  id: 'id',
-  blogId: 'blogId',
-  memberId: 'memberId',
-  parentId: 'parentId',
-  comment: 'comment',
-  isDeleted: 'isDeleted',
-  deletedAt: 'deletedAt',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BlogCommentScalarFieldEnum = (typeof BlogCommentScalarFieldEnum)[keyof typeof BlogCommentScalarFieldEnum]
-
-
-export const BlogLikeScalarFieldEnum = {
-  id: 'id',
-  blogId: 'blogId',
-  memberId: 'memberId',
-  createdAt: 'createdAt'
-} as const
-
-export type BlogLikeScalarFieldEnum = (typeof BlogLikeScalarFieldEnum)[keyof typeof BlogLikeScalarFieldEnum]
-
-
-export const BlogScalarFieldEnum = {
-  id: 'id',
-  authorId: 'authorId',
-  title: 'title',
-  content: 'content',
-  coverImage: 'coverImage',
-  isDeleted: 'isDeleted',
-  deletedAt: 'deletedAt',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type BlogScalarFieldEnum = (typeof BlogScalarFieldEnum)[keyof typeof BlogScalarFieldEnum]
 
 
 export const CategoryScalarFieldEnum = {

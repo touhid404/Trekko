@@ -36,16 +36,16 @@ export default function DashboardNavberContent({
     }
   }, [])
   return (
-    <div className="glass-effect flex h-16 items-center justify-between gap-4 border-b border-gray-100 px-4 md:px-8">
+    <div className="flex h-16 items-center justify-between gap-4 border-b border-border bg-background px-4 md:px-8">
       {/* Mobile Menu Toggle Button And Menu */}
       <Sheet open={isOpen && isMobile} onOpenChange={setIsOpen}>
         <SheetTrigger asChild className="md:hidden">
-          <Button variant={"outline"} size={"icon"} className="rounded-full">
-            <Menu className="h-5 w-5" />
+          <Button variant={"outline"} size={"icon"} className="rounded-none border-foreground hover:bg-muted">
+            <Menu className="h-5 w-5 text-foreground" />
           </Button>
         </SheetTrigger>
 
-        <SheetContent side="left" className="w-64 p-0">
+        <SheetContent side="left" className="w-64 p-0 border-r border-border bg-background">
           <DashboardMobileSidbar
             userInfo={userInfo}
             dashboardHome={dashboardHome}
@@ -56,10 +56,9 @@ export default function DashboardNavberContent({
 
       {/* Breadcrumb or Empty flexible spacer */}
       <div className="flex flex-1 items-center">
-        <div className="group hidden items-center gap-2 md:flex">
-          <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
-          <h2 className="text-sm font-black tracking-tight text-gray-900">
-            Hi, <span className="text-primary">{userInfo?.name?.split(" ")[0] || "Traveler"}</span>! 👋
+        <div className="hidden items-center gap-2 md:flex">
+          <h2 className="text-[12px] font-black uppercase tracking-[0.2em] text-foreground">
+            Session: <span className="opacity-40">{userInfo?.name || "Anonymous"}</span>
           </h2>
         </div>
       </div>
@@ -67,7 +66,7 @@ export default function DashboardNavberContent({
       {/* Right side action - Icons container */}
       <div className="flex items-center gap-4">
         {/* user dropdown */}
-        <div className="rounded-full p-0.5 ring-1 ring-gray-900/5 transition-all hover:ring-primary/30">
+        <div className="transition-all">
           <UserDropdown userInfo={userInfo}></UserDropdown>
         </div>
       </div>

@@ -1,4 +1,5 @@
-import { Heart, MessageCircle } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { Heart, MessageCircle, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 interface GuideCardProps {
@@ -25,69 +26,61 @@ export function GuideCard({ guide }: GuideCardProps) {
   const imageUrl = guide.coverImage || guide.guideMedia?.[0]?.url || "/assets/hero.jpg"
 
   return (
-    <Link href={`/travel-guides/${guide.id}`} className="group block">
-      <div className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:-translate-y-1">
+    <Link href={`/travel-guides/${guide.id}`} className="group block h-full">
+      <div className="flex h-full flex-col overflow-hidden rounded-[2rem] bg-white p-4 shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
         {/* Image Section */}
-        <div className="relative h-52 w-full overflow-hidden">
+        <div className="relative mb-4 aspect-[4/3] w-full shrink-0 overflow-hidden rounded-3xl">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imageUrl}
             alt={guide.title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
 
           {/* Badges */}
-          <div className="absolute top-4 left-4 flex gap-2">
+          <div className="absolute left-4 top-4 flex flex-wrap gap-2">
             {guide.category && (
-              <span className="rounded-full bg-white/20 px-3 py-1 text-[11px] font-bold text-white backdrop-blur-md">
+              <span className="rounded-full bg-white/90 px-3 py-1 text-xs font-bold text-gray-900 shadow-sm backdrop-blur-sm">
                 {guide.category.title}
               </span>
             )}
           </div>
 
-          {guide.isPaid && (
-            <div className="absolute top-4 right-4">
-              <span className="rounded-full bg-black px-3 py-1 text-[11px] font-bold text-white">
-                {guide.price ? `$${guide.price}` : "Premium"}
-              </span>
-            </div>
-          )}
-
-          {!guide.isPaid && (
-            <div className="absolute top-4 right-4">
-              <span className="rounded-full bg-emerald-500 px-3 py-1 text-[11px] font-bold text-white">
-                Free
-              </span>
-            </div>
-          )}
+          <div className="absolute right-4 top-4 flex flex-wrap gap-2">
+            <span className={cn(
+              "rounded-full px-3 py-1 text-xs font-bold text-white shadow-sm backdrop-blur-md",
+              guide.isPaid ? "bg-black/60" : "bg-emerald-500/80"
+            )}>
+              {guide.isPaid ? (guide.price ? `৳${guide.price}` : "Premium") : "Free"}
+            </span>
+          </div>
         </div>
 
         {/* Content */}
-        <div className="p-5">
-          <h3 className="mb-1.5 text-[15px] font-bold text-gray-900 line-clamp-1 group-hover:text-black">
+        <div className="flex flex-1 flex-col px-2">
+          <h3 className="mb-2 text-lg font-bold tracking-tight text-gray-900 line-clamp-1">
             {guide.title}
           </h3>
 
-          <p className="mb-4 text-xs leading-relaxed text-gray-500 line-clamp-2">
+          <p className="mb-4 text-sm text-gray-500 line-clamp-2 flex-1 leading-relaxed">
             {guide.description}
           </p>
 
           {/* Footer */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1 text-xs text-gray-400">
-                <Heart className="h-3.5 w-3.5" />
+          <div className="flex items-center justify-between border-t border-gray-100 pt-4 mt-auto">
+            <div className="flex items-center gap-4 text-gray-400">
+              <div className="flex items-center gap-1.5 text-xs font-semibold">
+                <Heart className="h-4 w-4" />
                 <span>{guide.votes?.length || 0}</span>
               </div>
-              <div className="flex items-center gap-1 text-xs text-gray-400">
-                <MessageCircle className="h-3.5 w-3.5" />
+              <div className="flex items-center gap-1.5 text-xs font-semibold">
+                <MessageCircle className="h-4 w-4" />
                 <span>{commentCount}</span>
               </div>
             </div>
 
-            <span className="text-xs font-semibold text-gray-400 group-hover:text-black transition-colors">
-              Read more →
+            <span className="flex items-center gap-1 text-sm font-bold text-gray-900 group-hover:text-emerald-600 transition-colors">
+              Details <ArrowRight className="h-4 w-4" />
             </span>
           </div>
         </div>

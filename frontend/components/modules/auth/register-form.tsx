@@ -68,7 +68,7 @@ export function RegisterForm({ redirectPath }: { redirectPath?: string }) {
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-900">
               <Compass className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-black tracking-tight">Trekko</span>
+            <span className="text-xl font-bold tracking-tight">Trekko</span>
           </Link>
 
           <div className="mb-14">
@@ -210,7 +210,7 @@ export function RegisterForm({ redirectPath }: { redirectPath?: string }) {
         <div className="relative z-10 flex h-full flex-col justify-between p-14">
           {/* Logo */}
           <Link href="/" className="inline-flex items-center gap-3 self-end">
-            <span className="text-xl font-black tracking-tight text-white">Trekko</span>
+            <span className="text-xl font-bold tracking-tight text-white">Trekko</span>
             <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 backdrop-blur-md">
               <Compass className="h-5 w-5 text-white" />
             </div>

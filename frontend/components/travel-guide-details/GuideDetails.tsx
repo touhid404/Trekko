@@ -1,7 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { notFound } from "next/navigation"
-import { Lock, ArrowRight, Calendar, Tag, Map, Clock, ShieldCheck } from "lucide-react"
+import { Lock, ArrowRight, Calendar, Map, Clock, ShieldCheck } from "lucide-react"
 import travelGuideServices from "@/services/travelGuide/travelGuide.service"
 import voteServices from "@/services/travelGuide/vote.service"
 import commentServices from "@/services/travelGuide/comment.service"
@@ -108,9 +108,9 @@ export default async function GuideDetails({ id }: Props) {
   const coverImage = guide.coverImage || "/assets/hero.jpg"
 
   return (
-    <div className="min-h-screen bg-[#FDFDFD]">
-      {/* Premium Hero Section */}
-      <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
+    <div className="min-h-screen bg-[#FAFAFA] pb-32 font-sans selection:bg-emerald-500/30">
+      {/* Immersive Full-Bleed Hero Section */}
+      <div className="relative h-[70vh] min-h-[500px] w-full">
         <Image
           src={coverImage}
           alt={guide.title}
@@ -118,108 +118,109 @@ export default async function GuideDetails({ id }: Props) {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent" />
 
-        <div className="absolute bottom-0 left-0 right-0 p-8 pb-12 md:p-12 md:pb-16 text-center">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-6 flex justify-center flex-wrap gap-2">
-              {guide.category && (
-                <span className="rounded-full bg-white/20 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white backdrop-blur-md">
-                  {guide.category.title}
-                </span>
-              )}
-            </div>
-
-            <h1 className="text-4xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl">
-              {guide.title}
-            </h1>
-
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 text-sm font-medium text-white/80">
-              {guide.member && (
-                <div className="flex items-center gap-2">
-                  <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-[10px] font-bold text-white backdrop-blur-md">
-                    {guide.member.name.charAt(0)}
-                  </div>
-                  <span>By {guide.member.name}</span>
-                </div>
-              )}
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4 opacity-70" />
-                <span>
-                  {guide.createdAt
-                    ? new Date(guide.createdAt).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })
-                    : "Unknown"}
-                </span>
+        <div className="absolute bottom-16 left-0 right-0 p-4 sm:p-6">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl p-6 md:p-8 rounded-[2rem] bg-black/30 backdrop-blur-xl border border-white/10 shadow-lg">
+              <div className="mb-6 flex flex-wrap gap-3">
+                {guide.category && (
+                  <span className="rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase text-white shadow-sm backdrop-blur-md border border-white/20">
+                    {guide.category.title}
+                  </span>
+                )}
+                {guide.locked && (
+                  <span className="flex items-center gap-1.5 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase text-black shadow-md">
+                    <Lock className="h-3 w-3" />
+                    Premium Content
+                  </span>
+                )}
               </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-emerald-400" />
-                <span className="text-emerald-400">Verified Itinerary</span>
+
+              <h1 className="text-4xl font-black tracking-tight text-white md:text-5xl mb-6 leading-tight">
+                {guide.title}
+              </h1>
+
+              <div className="flex flex-wrap items-center gap-6 text-sm font-semibold text-white/90">
+                {guide.member && (
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white font-bold backdrop-blur-md border border-white/20">
+                      {guide.member.name.charAt(0)}
+                    </div>
+                    <span className="text-base text-white">{guide.member.name}</span>
+                  </div>
+                )}
+                <div className="flex items-center gap-2">
+                  <Calendar className="h-4 w-4 opacity-70" />
+                  <span>{guide.createdAt ? new Date(guide.createdAt).getFullYear() : "Archived"}</span>
+                </div>
+                <div className="flex items-center gap-2 text-emerald-400 bg-emerald-400/10 px-3 py-1.5 rounded-full backdrop-blur-sm border border-emerald-400/20">
+                  <ShieldCheck className="h-4 w-4" />
+                  <span>Verified</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Two-Column Professional Layout */}
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+      {/* Overlapping Glass Layout */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 -mt-20">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
 
           {/* Main Content (Left Column) */}
-          <div className="lg:col-span-8 space-y-12">
+          <div className="lg:col-span-8 space-y-8">
 
             {/* Overview */}
-            <section>
-              <h2 className="mb-6 text-2xl font-black tracking-tight text-gray-900">
-                Guide Overview
+            <section className="rounded-3xl bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
+                 <Map className="w-48 h-48 -mt-10 -mr-10 rotate-12" />
+              </div>
+              <h2 className="mb-6 text-2xl font-bold tracking-tight text-gray-900">
+                Overview
               </h2>
-              <div className="prose prose-gray max-w-none text-[16px] leading-loose text-gray-600">
+              <div className="text-gray-600 text-base leading-relaxed space-y-4 relative z-10">
                 {guide.description?.split('\n').map((paragraph: string, i: number) => (
-                  <p key={i} className={i !== 0 ? "mt-4" : ""}>{paragraph}</p>
+                  <p key={i}>{paragraph}</p>
                 ))}
               </div>
             </section>
 
-            {/* Divider */}
-            <hr className="border-gray-100" />
-
             {/* Itinerary */}
             {itinerary.length > 0 && (
-              <section>
-                <div className="mb-8 flex items-center justify-between">
-                  <h2 className="text-2xl font-black tracking-tight text-gray-900">
-                    Day-by-Day Itinerary
+              <section className="rounded-3xl bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100">
+                <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+                    Itinerary
                   </h2>
-                  <div className="flex items-center gap-2 rounded-full bg-gray-100 px-4 py-1.5 text-xs font-bold text-gray-600">
-                    <Clock className="h-3.5 w-3.5" />
+                  <div className="flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-2 text-sm font-bold text-emerald-600 uppercase tracking-widest">
+                    <Clock className="h-4 w-4" />
                     {itinerary.length} Days
                   </div>
                 </div>
 
-                <div className="relative space-y-8 pl-8 before:absolute before:bottom-2 before:left-3.5 before:top-4 before:w-[2px] before:bg-gray-100">
+                <div className="relative space-y-8 before:absolute before:inset-y-0 before:left-6 before:w-px before:bg-gray-200">
                   {itinerary.map((day, index) => (
-                    <div key={index} className="relative">
+                    <div key={index} className="group relative flex items-start gap-6">
                       {/* Timeline Dot */}
-                      <div className="absolute -left-[39px] top-1 flex h-8 w-8 items-center justify-center rounded-full border-4 border-white bg-black text-[12px] font-black text-white shadow-sm">
+                      <div className="relative z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-900 text-base font-bold text-white shadow-lg ring-4 ring-white transition-transform duration-500 group-hover:scale-110 group-hover:bg-emerald-500">
                         {day.day || index + 1}
                       </div>
 
-                      <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-[0_2px_10px_rgb(0,0,0,0.02)] transition-shadow hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
-                        <h3 className="text-lg font-bold text-gray-900">
+                      <div className="flex-1 rounded-[1.5rem] bg-gray-50/50 p-6 shadow-sm transition-all duration-500 hover:bg-white hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:-translate-y-1 border border-transparent hover:border-gray-100">
+                        <h3 className="text-lg font-bold text-gray-900 mb-4 tracking-tight">
                           {day.title}
                         </h3>
                         {day.activities && day.activities.length > 0 && (
-                          <ul className="mt-4 space-y-3">
+                          <ul className="space-y-3">
                             {day.activities.map((activity, i) => (
                               <li
                                 key={i}
-                                className="flex items-start gap-3 text-[15px] leading-relaxed text-gray-600"
+                                className="flex items-start gap-3 text-sm text-gray-600 font-medium"
                               >
-                                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
-                                {activity}
+                                <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500/40" />
+                                <span className="leading-relaxed">{activity}</span>
                               </li>
                             ))}
                           </ul>
@@ -231,71 +232,59 @@ export default async function GuideDetails({ id }: Props) {
               </section>
             )}
 
-            {/* Discussion Section (Moved inside main column) */}
+            {/* Discussion Section */}
             {!guide.locked && (
-              <>
-                <hr className="border-gray-100 my-8" />
-                <CommentsSection guideId={id} comments={comments} currentUserId={currentUserId} />
-              </>
+              <div className="rounded-3xl bg-white p-8 sm:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100">
+                 <CommentsSection guideId={id} comments={comments} currentUserId={currentUserId} />
+              </div>
             )}
           </div>
 
           {/* Sticky Sidebar (Right Column) */}
-          <div className="lg:col-span-4">
-            <div className="sticky top-24 space-y-8">
+          <div className="lg:col-span-4 hidden lg:block">
+            <div className="sticky top-28 space-y-6">
 
               {/* Payment / Booking Card */}
-              {guide.locked ? (
-                <div className="overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-[0_8px_30px_rgb(0,0,0,0.06)]">
-                  <div className="bg-gray-50 p-6 text-center border-b border-gray-100">
-                    <Lock className="mx-auto mb-3 h-8 w-8 text-gray-400" />
-                    <h3 className="font-bold text-gray-900">Premium Guide</h3>
+              {guide.locked && (
+                <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-gray-100 transition-transform duration-500 hover:-translate-y-1">
+                  <div className="bg-gray-900 p-8 text-center relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 blur-[40px] rounded-full" />
+                    <Lock className="mx-auto mb-4 h-8 w-8 text-emerald-400" />
+                    <h3 className="text-xs font-bold uppercase tracking-[0.1em] text-white">Premium Access</h3>
                   </div>
                   <div className="p-8 text-center">
-                    <p className="text-sm text-gray-500 mb-6">
-                      Unlock full access to the day-by-day itinerary, insider tips, and exact locations.
+                    <p className="text-sm font-medium text-gray-500 mb-6 leading-relaxed">
+                      Unlock the complete high-fidelity itinerary and verified expedition coordinates.
                     </p>
                     <div className="mb-8">
-                      <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Total Price</span>
-                      <p className="mt-1 text-4xl font-black text-gray-900">৳{guide.price}</p>
+                      <p className="text-4xl font-black tracking-tight text-gray-900">৳{guide.price}</p>
+                      <span className="text-[10px] font-bold text-gray-400 mt-2 block uppercase tracking-[0.1em]">One-Time Payment</span>
                     </div>
                     <Link
                       href={`/payment?guideId=${id}`}
-                      className="flex w-full items-center justify-center gap-2 rounded-full bg-black py-4 text-sm font-bold text-white transition-transform hover:scale-105 active:scale-95"
+                      className="flex w-full items-center justify-center h-12 rounded-full bg-black text-sm font-bold tracking-widest uppercase text-white transition-all hover:bg-emerald-500 hover:shadow-[0_8px_30px_rgba(16,185,129,0.3)] active:scale-95"
                     >
-                      <ArrowRight className="h-4 w-4" />
-                      Unlock Now
+                      Acquire Access <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </div>
                 </div>
-              ) : (
-                <div className="overflow-hidden rounded-3xl border border-emerald-100 bg-emerald-50/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
-                  <div className="p-8 text-center">
-                    <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100">
-                      <Tag className="h-5 w-5 text-emerald-600" />
-                    </div>
-                    <h3 className="text-lg font-black text-gray-900 mb-2">Free Access</h3>
-                    <p className="text-sm text-gray-600 mb-6">
-                      This comprehensive guide is available completely free to the community.
-                    </p>
-                    <button className="w-full rounded-full bg-emerald-500 py-4 text-sm font-bold text-white shadow-md shadow-emerald-200 transition-colors hover:bg-emerald-600">
-                      Save to Favorites
-                    </button>
-                  </div>
-                </div>
-              )}
+              ) }
 
-              {/* Interactive Explorer Checklist (For Purchasers) */}
+              {/* Interactive Explorer Checklist */}
               {!guide.locked && guide.checkpoints && guide.checkpoints.length > 0 && (
-                <CheckpointProgressTracker 
-                  guideId={id} 
-                  checkpoints={guide.checkpoints} 
-                />
+                <div className="rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100">
+                  <CheckpointProgressTracker 
+                    guideId={id} 
+                    checkpoints={guide.checkpoints} 
+                  />
+                </div>
               )}
               
               {/* Voting Section */}
               {!guide.locked && (
-                <VoteSection guideId={id} voteStats={voteStats} />
+                <div className="rounded-[2rem] bg-white p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-gray-100">
+                  <VoteSection guideId={id} voteStats={voteStats} />
+                </div>
               )}
 
             </div>

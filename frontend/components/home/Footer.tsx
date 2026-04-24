@@ -1,111 +1,66 @@
 import Link from "next/link"
-import { Home } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-900 pt-16 pb-8 text-zinc-400">
+    <footer className="bg-background pt-24 pb-12 text-foreground border-t border-border">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-5">
+        <div className="grid gap-16 lg:grid-cols-5">
           {/* Brand and Description (Takes 2 cols) */}
           <div className="lg:col-span-2">
-            <Link href="/" className="mb-6 flex items-center gap-2">
-              <Home className="h-6 w-6 text-white" />
-              <span className="text-2xl font-bold tracking-tight text-white">
-                Travel<sup className="font-medium text-sm">™</sup>
+            <Link href="/" className="mb-8 flex items-center gap-2">
+              <span className="text-3xl font-extrabold tracking-tighter">
+                TREKKO.
               </span>
             </Link>
-            <p className="mb-8 text-sm leading-relaxed max-w-sm">
-              Discovering the right path to wellness is all about personalizing your journey. We&apos;re excited to introduce this to our wellness community.
+            <p className="mb-10 text-sm font-medium leading-relaxed max-w-xs opacity-70">
+              Redefining the art of discovery. We provide high-fidelity chronicles for the modern explorer seeking authenticity and precision.
             </p>
-            <div className="flex gap-4">
-              <Link href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-800 transition-colors hover:bg-zinc-700 hover:text-white">
-                <span className="font-bold text-xs">Fb</span>
-              </Link>
-              <Link href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-800 transition-colors hover:bg-zinc-700 hover:text-white">
-                <span className="font-bold text-xs">Ig</span>
-              </Link>
-              <Link href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-800 transition-colors hover:bg-zinc-700 hover:text-white">
-                <span className="font-bold text-xs">Tw</span>
-              </Link>
-              <Link href="#" className="flex h-10 w-10 items-center justify-center rounded-full bg-zinc-800 transition-colors hover:bg-zinc-700 hover:text-white">
-                <span className="font-bold text-xs">In</span>
-              </Link>
+            <div className="flex gap-6">
+              {['FB', 'IG', 'TW', 'LI'].map((social) => (
+                <Link key={social} href="#" className="text-[10px] font-black tracking-widest hover:underline underline-offset-4">
+                  {social}
+                </Link>
+              ))}
             </div>
           </div>
 
           {/* Links Columns */}
           <div className="lg:col-span-1">
-            <h3 className="mb-6 text-sm font-bold uppercase tracking-wider text-white">
-              Resources
+            <h3 className="mb-8 text-[11px] font-black uppercase tracking-[0.2em]">
+              Archive
             </h3>
-            <ul className="space-y-4 text-sm">
-              <li>
-                <Link href="/" className="transition-colors hover:text-white">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/travel-guides" className="transition-colors hover:text-white">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="transition-colors hover:text-white">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="transition-colors hover:text-white">
-                  FAQs
-                </Link>
-              </li>
+            <ul className="space-y-4 text-[12px] font-bold uppercase tracking-wider">
+              <li><Link href="/" className="hover:underline underline-offset-4">Home</Link></li>
+              <li><Link href="/travel-guides" className="hover:underline underline-offset-4">Chronicles</Link></li>
+              <li><Link href="/blog" className="hover:underline underline-offset-4">Insights</Link></li>
+              <li><Link href="/faq" className="hover:underline underline-offset-4">Manifesto</Link></li>
             </ul>
           </div>
 
           <div className="lg:col-span-1">
-            <h3 className="mb-6 text-sm font-bold uppercase tracking-wider text-white">
-              Quick Link
+            <h3 className="mb-8 text-[11px] font-black uppercase tracking-[0.2em]">
+              Connect
             </h3>
-            <ul className="space-y-4 text-sm">
-              <li>
-                <Link href="/travel-guides" className="transition-colors hover:text-white">
-                  Start Hiking
-                </Link>
-              </li>
-              <li>
-                <Link href="/dashboard" className="transition-colors hover:text-white">
-                  Apply as content
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="transition-colors hover:text-white">
-                  Contact us
-                </Link>
-              </li>
+            <ul className="space-y-4 text-[12px] font-bold uppercase tracking-wider">
+              <li><Link href="/travel-guides" className="hover:underline underline-offset-4">Explore</Link></li>
+              <li><Link href="/dashboard" className="hover:underline underline-offset-4">Dashboard</Link></li>
+              <li><Link href="/contact" className="hover:underline underline-offset-4">Contact</Link></li>
             </ul>
           </div>
 
           <div className="lg:col-span-1">
-            <h3 className="mb-6 text-sm font-bold uppercase tracking-wider text-white">
-              Help & Support
+            <h3 className="mb-8 text-[11px] font-black uppercase tracking-[0.2em]">
+              Support
             </h3>
-            <ul className="space-y-4 text-sm">
-              <li>
-                <Link href="/help" className="transition-colors hover:text-white">
-                  Help Center
-                </Link>
-              </li>
-              <li>
-                <Link href="/community" className="transition-colors hover:text-white">
-                  Community
-                </Link>
-              </li>
+            <ul className="space-y-4 text-[12px] font-bold uppercase tracking-wider">
+              <li><Link href="/help" className="hover:underline underline-offset-4">Assistance</Link></li>
+              <li><Link href="/community" className="hover:underline underline-offset-4">Network</Link></li>
             </ul>
           </div>
         </div>
 
-        <div className="mt-16 border-t border-zinc-800 pt-8 text-center text-xs">
-          <p>Copyright © {new Date().getFullYear()} Trekko. All Rights Reserved.</p>
+        <div className="mt-24 border-t border-border pt-10 text-center text-[10px] font-black uppercase tracking-[0.3em]">
+          <p>© {new Date().getFullYear()} TREKKO SYSTEM. ALL RIGHTS RESERVED.</p>
         </div>
       </div>
     </footer>

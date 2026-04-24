@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 
 import * as React from "react"
@@ -61,51 +62,49 @@ const UserDropdown = ({ userInfo }: UserDropdownProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={"outline"} size={"icon"} className="rounded-full">
-          <span className="text-sm font-semibold">
+        <Button variant={"outline"} size={"icon"} className="rounded-none border-foreground bg-background">
+          <span className="text-[12px] font-black">
             {userInfo?.name?.charAt(0).toUpperCase()}
           </span>
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align={"end"} className="w-56">
-        <DropdownMenuLabel>
+      <DropdownMenuContent align={"end"} className="w-56 rounded-none border-foreground bg-background p-2">
+        <DropdownMenuLabel className="px-3 py-4">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium">{userInfo?.name}</p>
-
-            <p className="text-xs text-muted-foreground">{userInfo?.email}</p>
-
-            <p className="text-xs text-primary capitalize">
-              {userInfo?.role?.toLowerCase().replace("_", " ")}
+            <p className="text-[13px] font-black uppercase tracking-widest text-foreground">{userInfo?.name}</p>
+            <p className="text-[10px] font-bold text-foreground/40">{userInfo?.email}</p>
+            <p className="mt-2 text-[9px] font-black uppercase tracking-[0.3em] text-foreground">
+              Level: {userInfo?.role?.toLowerCase()}
             </p>
           </div>
         </DropdownMenuLabel>
 
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator className="bg-foreground/10" />
 
-        <DropdownMenuItem>
-          <Link href={"/my-profile"}>
-            <User className="mr-2 h-4 w-4" />
-            My Profile
+        <DropdownMenuItem className="focus:bg-foreground focus:text-background rounded-none cursor-pointer py-3">
+          <Link href={"/my-profile"} className="flex w-full items-center text-[10px] font-black uppercase tracking-widest">
+            <User className="mr-3 h-4 w-4" />
+            Profile Access
           </Link>
         </DropdownMenuItem>
 
-        <DropdownMenuItem>
-          <Link href="/settings/change-password">
-            <Key className="mr-2 h-4 w-4" />
-            Change Password
+        <DropdownMenuItem className="focus:bg-foreground focus:text-background rounded-none cursor-pointer py-3">
+          <Link href="/settings/change-password" className="flex w-full items-center text-[10px] font-black uppercase tracking-widest">
+            <Key className="mr-3 h-4 w-4" />
+            Security Key
           </Link>
         </DropdownMenuItem>
 
-        <DropdownMenuSeparator />
+        <DropdownMenuSeparator className="bg-foreground/10" />
 
         <DropdownMenuItem
           onClick={handleLogout}
-          className="cursor-pointer text-red-600"
+          className="cursor-pointer text-red-600 focus:bg-red-600 focus:text-white rounded-none py-3 text-[10px] font-black uppercase tracking-widest"
           disabled={isLoggingOut}
         >
-          <LogOut className="mr-2 h-4 w-4" />
-          {isLoggingOut ? "Logging out..." : "Logout"}
+          <LogOut className="mr-3 h-4 w-4" />
+          {isLoggingOut ? "Processing..." : "Disconnect"}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
