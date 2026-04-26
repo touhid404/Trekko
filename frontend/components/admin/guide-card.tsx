@@ -23,15 +23,15 @@ export function GuideCard({ guide, onView, onRemove }: GuideCardProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "DRAFT":
-        return "bg-gray-100 text-gray-800"
+        return "bg-gray-50/90 text-gray-700 border-gray-200"
       case "UNDER_REVIEW":
-        return "bg-blue-100 text-blue-800"
+        return "bg-amber-50/90 text-amber-700 border-amber-200"
       case "APPROVED":
-        return "bg-green-100 text-green-800"
+        return "bg-teal-50/90 text-teal-700 border-teal-200"
       case "REJECTED":
-        return "bg-red-100 text-red-800"
+        return "bg-rose-50/90 text-rose-700 border-rose-200"
       default:
-        return "bg-gray-100 text-gray-800"
+        return "bg-gray-50/90 text-gray-700 border-gray-200"
     }
   }
 
@@ -40,7 +40,7 @@ export function GuideCard({ guide, onView, onRemove }: GuideCardProps) {
   }
 
   return (
-    <Card className="flex h-full flex-col overflow-hidden transition-all hover:shadow-lg">
+    <Card className="flex h-full flex-col overflow-hidden rounded-3xl border-gray-100 bg-white transition-all hover:shadow-[0_8px_30px_rgba(0,0,0,0.08)] shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
       {/* Cover Image */}
       <div className="relative h-48 w-full bg-muted">
         {guide?.coverImage ? (
@@ -59,7 +59,7 @@ export function GuideCard({ guide, onView, onRemove }: GuideCardProps) {
         {/* Status Badge */}
         <div className="absolute top-2 right-2">
           <div
-            className={`inline-block rounded-full px-3 py-1 text-sm font-medium ${getStatusColor(guide?.status)}`}
+            className={`inline-block rounded-full border px-2.5 py-0.5 text-xs font-semibold tracking-wide backdrop-blur-md ${getStatusColor(guide?.status)}`}
           >
             {getStatusLabel(guide?.status)}
           </div>

@@ -1,4 +1,3 @@
-import { getDefaultDashboardRoute } from "@/lib/authUtils"
 import { getNavItems } from "@/lib/navItems"
 import { getUserInfo } from "@/services/auth.service"
 import { NavSection } from "@/types/dashboard.navItems.types"
@@ -9,13 +8,9 @@ const DashboardSidebar = async () => {
 
   const navItems: NavSection[] = getNavItems(userInfo?.role)
 
-  const dashboardHome = getDefaultDashboardRoute(userInfo?.role)
-
   return (
     <DashboardSidebarContent
-      userInfo={userInfo}
       navItems={navItems}
-      dashboardHome={dashboardHome}
     />
   )
 }

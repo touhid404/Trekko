@@ -29,7 +29,7 @@ export function AllGuidesFilters({
   const hasActiveFilters = currentSort !== "all" || currentStatus !== "all"
 
   return (
-    <div className="mb-6 space-y-4 rounded-lg border bg-card p-4">
+    <div className="mb-8 space-y-4 rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
       {/* Filters Grid */}
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Sort */}

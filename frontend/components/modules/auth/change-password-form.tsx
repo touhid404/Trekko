@@ -11,7 +11,7 @@ import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { changePasswordAction } from "@/app/actions/auth/change-password"
 import { IChangePasswordPayload } from "@/types/auth.types"
-import { KeyRound, ArrowLeft } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 
 export function ChangePasswordForm() {
   const [loading, setLoading] = React.useState(false)
@@ -64,13 +64,13 @@ export function ChangePasswordForm() {
 
   return (
     <div className="flex w-full max-w-xl flex-col">
-      <div className="mb-8">
-        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-gray-900 shadow-sm">
-          <KeyRound className="h-8 w-8 text-white" />
-        </div>
-        <h1 className="text-4xl font-black tracking-tight text-gray-900">Security Setting</h1>
-        <p className="mt-2 text-lg text-gray-500">
-          Update your authentication credentials securely to protect your Trekko.
+      <div className="mb-10">
+        <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-emerald-500">
+          Security
+        </span>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Authentication</h1>
+        <p className="mt-2 text-sm font-medium text-gray-500">
+          Update your credentials securely to protect your account.
         </p>
       </div>
 
@@ -90,7 +90,7 @@ export function ChangePasswordForm() {
                   <Input
                     type="password"
                     placeholder="Enter current password"
-                    className="h-14 rounded-xl bg-gray-50 px-4 transition-all focus:bg-white"
+                    className="h-12 rounded-xl bg-[#FAFAFA] border-gray-100 px-4 transition-all focus:bg-white"
                     value={field.state.value}
                     onChange={(e) => field.handleChange(e.target.value)}
                   />
@@ -106,7 +106,7 @@ export function ChangePasswordForm() {
                   <Input
                     type="password"
                     placeholder="Create new password"
-                    className="h-14 rounded-xl bg-gray-50 px-4 transition-all focus:bg-white"
+                    className="h-12 rounded-xl bg-[#FAFAFA] border-gray-100 px-4 transition-all focus:bg-white"
                     value={field.state.value}
                     onChange={(e) => field.handleChange(e.target.value)}
                   />
@@ -122,7 +122,7 @@ export function ChangePasswordForm() {
                   <Input
                     type="password"
                     placeholder="Verify new password"
-                    className="h-14 rounded-xl bg-gray-50 px-4 transition-all focus:bg-white"
+                    className="h-12 rounded-xl bg-[#FAFAFA] border-gray-100 px-4 transition-all focus:bg-white"
                     value={field.state.value}
                     onChange={(e) => field.handleChange(e.target.value)}
                   />
@@ -135,14 +135,14 @@ export function ChangePasswordForm() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="h-14 w-full rounded-2xl bg-gray-900 font-bold uppercase tracking-widest hover:bg-black transition-all sm:w-auto sm:flex-1"
+                className="h-12 w-full rounded-xl"
               >
-                {loading ? "Authenticating..." : "Change Password"}
+                {loading ? "Authenticating..." : "Save Changes"}
               </Button>
 
               <Link
                 href="/dashboard"
-                className="flex h-14 w-full sm:w-auto sm:flex-1 items-center justify-center gap-2 rounded-2xl border border-gray-200 bg-white font-bold uppercase tracking-widest text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900"
+                className="flex h-12 w-full sm:w-auto sm:flex-1 items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 hover:text-gray-900"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Return

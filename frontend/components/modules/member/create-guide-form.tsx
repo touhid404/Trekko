@@ -10,10 +10,7 @@ import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
-  CardHeader,
-  CardTitle,
 } from "@/components/ui/card"
 import { Field, FieldError, FieldLabel } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
@@ -192,15 +189,18 @@ export function CreateGuideForm({ categories }: CreateGuideFormProps) {
   })
 
   return (
-    <div className="min-h-screen w-full bg-muted/10 p-6">
-      <Card className="w-full max-w-none">
-        <CardHeader>
-          <CardTitle>Create Trekko Guide</CardTitle>
-          <CardDescription>
-            Fill in the details to create your Trekko guide
-          </CardDescription>
-        </CardHeader>
+    <div className="mx-auto max-w-7xl">
+      <div className="mb-10">
+        <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-emerald-500">
+          Builder
+        </span>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Create Trekko Guide</h1>
+        <p className="mt-2 text-sm font-medium text-gray-500">
+          Fill in the details to construct your immersive travel guide experience
+        </p>
+      </div>
 
+      <Card className="w-full max-w-none overflow-hidden rounded-3xl border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] bg-white">
         <form.Provider>
           <form
             onSubmit={(e) => {
@@ -208,8 +208,8 @@ export function CreateGuideForm({ categories }: CreateGuideFormProps) {
               form.handleSubmit()
             }}
           >
-            <CardContent className="grid grid-cols-1 gap-6 xl:grid-cols-2">
-              <div className="space-y-4">
+            <CardContent className="grid grid-cols-1 gap-12 p-8 xl:grid-cols-2">
+              <div className="space-y-6">
                 <h3 className="text-lg font-semibold">Basic Information</h3>
 
                 <form.Field name="title">
@@ -298,7 +298,7 @@ export function CreateGuideForm({ categories }: CreateGuideFormProps) {
                 </form.Field>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <h3 className="text-lg font-semibold">Media & Pricing</h3>
 
                 <form.Field name="coverImage">
@@ -434,7 +434,7 @@ export function CreateGuideForm({ categories }: CreateGuideFormProps) {
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="col-span-1 space-y-6 xl:col-span-2">
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold">Itinerary</h3>
                   <form.Field name="itinerary">
@@ -469,8 +469,8 @@ export function CreateGuideForm({ categories }: CreateGuideFormProps) {
                         ? field.state.value
                         : []
                       ).map((item, index) => (
-                        <Card key={index} className="p-4">
-                          <div className="mb-4 flex items-center justify-between">
+                        <Card key={index} className="overflow-hidden rounded-2xl border-gray-100 bg-[#FAFAFA] p-6 shadow-sm">
+                          <div className="mb-6 flex items-center justify-between">
                             <h4 className="font-medium">Day {item.day}</h4>
                             <Button
                               type="button"

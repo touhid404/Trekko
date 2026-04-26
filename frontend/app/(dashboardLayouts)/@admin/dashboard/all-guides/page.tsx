@@ -1,6 +1,5 @@
 import { AllGuidesList } from "@/components/admin/all-guides-list"
 import { getAllGuidesAction } from "@/app/actions/admin/getAllGuidesAction"
-import { Guide } from "@/services/admin/all-guides.service"
 
 const LIMIT = 10
 
@@ -28,21 +27,22 @@ export default async function AllGuidesPage({ searchParams }: PageProps) {
   const initialTotal = response?.meta?.total || 0
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold">Guide Management</h1>
-          <p className="mt-2 text-muted-foreground">
-            View, edit, and manage all travel guides
-          </p>
-        </div>
+    <div className="mx-auto max-w-7xl">
+      <div className="mb-10">
+        <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-emerald-500">
+          Directory
+        </span>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Guide Management</h1>
+        <p className="mt-2 text-sm font-medium text-gray-500">
+          View, edit, and manage all travel guides
+        </p>
+      </div>
 
         <AllGuidesList
           initialGuides={initialGuides}
           initialTotal={initialTotal}
           initialPage={page}
         />
-      </div>
     </div>
   )
 }

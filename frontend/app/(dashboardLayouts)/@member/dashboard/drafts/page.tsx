@@ -3,10 +3,9 @@ import DraftsList from "@/components/modules/member/drafts-list"
 import { Suspense } from "react"
 
 async function DraftsContent() {
+  let response
   try {
-    const response = await getDrafts(1, 10)
-
-    return <DraftsList initialData={response.data} />
+    response = await getDrafts(1, 10)
   } catch (error) {
     console.error("Failed to fetch drafts:", error)
     return (
@@ -17,18 +16,22 @@ async function DraftsContent() {
       </div>
     )
   }
+
+  return <DraftsList initialData={response.data} />
 }
 
 export default function DraftsPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold">My Drafts</h1>
-          <p className="mt-2 text-muted-foreground">
-            View and continue editing your draft guides
-          </p>
-        </div>
+    <div className="mx-auto max-w-7xl">
+      <div className="mb-10">
+        <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-emerald-500">
+          Workspace
+        </span>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">My Drafts</h1>
+        <p className="mt-2 text-sm font-medium text-gray-500">
+          View and continue editing your draft guides
+        </p>
+      </div>
 
         <Suspense
           fallback={
@@ -39,7 +42,6 @@ export default function DraftsPage() {
         >
           <DraftsContent />
         </Suspense>
-      </div>
     </div>
   )
 }

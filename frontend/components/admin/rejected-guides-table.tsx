@@ -7,7 +7,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { MoreVertical, Check } from "lucide-react"
+import { MoreVertical, Check, MapPin } from "lucide-react"
+import Image from "next/image"
 import {
   Table,
   TableBody,
@@ -33,7 +34,7 @@ export function RejectedGuidesTable({
   }
 
   return (
-    <div className="rounded-md border">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
       <Table>
         <TableHeader>
           <TableRow>
@@ -48,9 +49,29 @@ export function RejectedGuidesTable({
         <TableBody>
           {guides.map((guide) => (
             <TableRow key={guide.id}>
-              <TableCell className="max-w-xs font-medium">
-                <div className="truncate" title={guide?.title}>
-                  {guide?.title}
+              <TableCell>
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
+                    {guide?.coverImage ? (
+                      <Image
+                        src={guide.coverImage}
+                        alt={guide.title || "Guide Cover"}
+                        width={48}
+                        height={48}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <MapPin className="h-5 w-5 text-slate-400" />
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <span className="max-w-xs truncate font-bold text-sm text-slate-900">
+                      {guide?.title}
+                    </span>
+                    <span className="text-xs text-slate-500">
+                      ID-{guide?.id?.slice(0, 8)}
+                    </span>
+                  </div>
                 </div>
               </TableCell>
               <TableCell>
@@ -62,7 +83,7 @@ export function RejectedGuidesTable({
                 </span>
               </TableCell>
               <TableCell>
-                <Badge variant="secondary" className="bg-red-100 text-red-800">
+                <Badge variant="secondary" className="bg-rose-50 text-rose-600 border border-rose-100">
                   {guide?.status?.replace(/_/g, " ")}
                 </Badge>
               </TableCell>

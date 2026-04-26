@@ -15,29 +15,9 @@ const getCommonNavItems = (role: UserRole): NavSection[] => {
           icon: "LayoutDashboard",
         },
         {
-          title: "My Profile",
-          href: "/my-profile",
-          icon: "User",
-        },
-        {
           title: "Travel Guides",
           href: "/travel-guides",
           icon: "Map",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      items: [
-        // {
-        //   title: "Account Settings",
-        //   href: "/settings/account",
-        //   icon: "Settings",
-        // },
-        {
-          title: "Change Password",
-          href: "/change-password",
-          icon: "Lock",
         },
       ],
     },

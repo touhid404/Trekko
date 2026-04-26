@@ -12,14 +12,15 @@ export default async function CategoriesPage({ searchParams }: PageProps) {
   const initialTotal = response?.data?.meta?.total || 0
 
   return (
-    <div className="space-y-6 p-4 lg:p-8">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight">Categories</h1>
-          <p className="text-muted-foreground">
-            Manage travel guide categories
-          </p>
-        </div>
+    <div className="mx-auto max-w-7xl">
+      <div className="mb-10">
+        <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-emerald-500">
+          Directory
+        </span>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Categories</h1>
+        <p className="mt-2 text-sm font-medium text-gray-500">
+          Manage travel guide categories
+        </p>
       </div>
 
       <CategoriesList

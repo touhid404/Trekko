@@ -62,49 +62,53 @@ const UserDropdown = ({ userInfo }: UserDropdownProps) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant={"outline"} size={"icon"} className="rounded-none border-foreground bg-background">
-          <span className="text-[12px] font-black">
+        <Button variant={"outline"} size={"icon"} className="h-10 w-10 rounded-full border border-gray-200 bg-white text-gray-700 hover:bg-emerald-50 hover:text-emerald-600 hover:border-emerald-200 shadow-sm transition-all focus-visible:ring-emerald-500">
+          <span className="text-sm font-bold">
             {userInfo?.name?.charAt(0).toUpperCase()}
           </span>
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent align={"end"} className="w-56 rounded-none border-foreground bg-background p-2">
-        <DropdownMenuLabel className="px-3 py-4">
-          <div className="flex flex-col space-y-1">
-            <p className="text-[13px] font-black uppercase tracking-widest text-foreground">{userInfo?.name}</p>
-            <p className="text-[10px] font-bold text-foreground/40">{userInfo?.email}</p>
-            <p className="mt-2 text-[9px] font-black uppercase tracking-[0.3em] text-foreground">
-              Level: {userInfo?.role?.toLowerCase()}
-            </p>
+      <DropdownMenuContent align={"end"} className="w-64 rounded-[2rem] border border-gray-100 bg-white/95 p-3 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-xl">
+        <DropdownMenuLabel className="px-5 py-5 mb-2 rounded-[1.5rem] bg-gray-50/50">
+          <div className="flex flex-col space-y-1.5">
+            <p className="text-sm font-bold text-gray-900">{userInfo?.name}</p>
+            <p className="text-xs font-semibold text-gray-500 truncate">{userInfo?.email}</p>
+            <div className="mt-2 inline-flex">
+              <span className="rounded-full bg-emerald-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-600">
+                {userInfo?.role?.toLowerCase()}
+              </span>
+            </div>
           </div>
         </DropdownMenuLabel>
 
-        <DropdownMenuSeparator className="bg-foreground/10" />
+        <DropdownMenuSeparator className="bg-gray-100/50 my-2" />
 
-        <DropdownMenuItem className="focus:bg-foreground focus:text-background rounded-none cursor-pointer py-3">
-          <Link href={"/my-profile"} className="flex w-full items-center text-[10px] font-black uppercase tracking-widest">
-            <User className="mr-3 h-4 w-4" />
-            Profile Access
-          </Link>
-        </DropdownMenuItem>
+        <div className="space-y-1">
+          <DropdownMenuItem className="cursor-pointer rounded-2xl px-5 py-3.5 text-sm font-semibold text-gray-600 transition-colors focus:bg-emerald-50 focus:text-emerald-600 outline-none">
+            <Link href={"/my-profile"} className="flex w-full items-center">
+              <User className="mr-3 h-4 w-4" />
+              Manage Profile
+            </Link>
+          </DropdownMenuItem>
 
-        <DropdownMenuItem className="focus:bg-foreground focus:text-background rounded-none cursor-pointer py-3">
-          <Link href="/settings/change-password" className="flex w-full items-center text-[10px] font-black uppercase tracking-widest">
-            <Key className="mr-3 h-4 w-4" />
-            Security Key
-          </Link>
-        </DropdownMenuItem>
+          <DropdownMenuItem className="cursor-pointer rounded-2xl px-5 py-3.5 text-sm font-semibold text-gray-600 transition-colors focus:bg-emerald-50 focus:text-emerald-600 outline-none">
+            <Link href="/settings/change-password" className="flex w-full items-center">
+              <Key className="mr-3 h-4 w-4" />
+              Security Settings
+            </Link>
+          </DropdownMenuItem>
+        </div>
 
-        <DropdownMenuSeparator className="bg-foreground/10" />
+        <DropdownMenuSeparator className="bg-gray-100/50 my-2" />
 
         <DropdownMenuItem
           onClick={handleLogout}
-          className="cursor-pointer text-red-600 focus:bg-red-600 focus:text-white rounded-none py-3 text-[10px] font-black uppercase tracking-widest"
+          className="cursor-pointer rounded-2xl px-5 py-3.5 text-sm font-semibold text-rose-600 transition-colors focus:bg-rose-50 focus:text-rose-700 outline-none"
           disabled={isLoggingOut}
         >
           <LogOut className="mr-3 h-4 w-4" />
-          {isLoggingOut ? "Processing..." : "Disconnect"}
+          {isLoggingOut ? "Disconnecting..." : "Sign Out Securely"}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

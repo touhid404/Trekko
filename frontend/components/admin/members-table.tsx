@@ -118,7 +118,7 @@ export function MembersTable({ members }: MembersTableProps) {
   const isUpdating = (memberId: string) => updatingMembers.has(memberId)
 
   return (
-    <div className="rounded-md border">
+    <div className="rounded-2xl border border-slate-200 bg-white shadow-sm">
       <Table>
         <TableHeader>
           <TableRow>
@@ -137,10 +137,10 @@ export function MembersTable({ members }: MembersTableProps) {
               <TableCell>{member.email}</TableCell>
               <TableCell>
                 <span
-                  className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
+                  className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold tracking-wide ${
                     member.role === "ADMIN"
-                      ? "bg-blue-100 text-blue-800"
-                      : "bg-gray-100 text-gray-800"
+                      ? "bg-emerald-50 text-emerald-600 border border-emerald-100"
+                      : "bg-gray-50 text-gray-600 border border-gray-100"
                   }`}
                 >
                   {member.role}
@@ -148,10 +148,10 @@ export function MembersTable({ members }: MembersTableProps) {
               </TableCell>
               <TableCell>
                 <span
-                  className={`inline-flex items-center rounded-full px-2 py-1 text-xs font-medium ${
+                  className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold tracking-wide ${
                     (member.status || "ACTIVE") === "ACTIVE"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-red-100 text-red-800"
+                      ? "bg-teal-50 text-teal-600 border border-teal-100"
+                      : "bg-rose-50 text-rose-600 border border-rose-100"
                   }`}
                 >
                   {member.status || "ACTIVE"}

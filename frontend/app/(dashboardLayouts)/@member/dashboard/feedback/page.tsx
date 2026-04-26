@@ -60,23 +60,30 @@ export default function MemberFeedbackPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-background">
-        <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold">Feedback from Admins</h1>
-          <p className="mt-2 text-muted-foreground">Error: {error}</p>
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-10">
+          <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-rose-500">
+            Error
+          </span>
+          <h1 className="text-3xl font-bold tracking-tight text-gray-900">Feedback from Admins</h1>
+          <p className="mt-2 text-sm font-medium text-gray-500">Error: {error}</p>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold">Feedback from Admins</h1>
-        <p className="mt-2 text-muted-foreground">
+    <div className="mx-auto max-w-7xl">
+      <div className="mb-10">
+        <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-emerald-500">
+          Moderation
+        </span>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Feedback from Admins</h1>
+        <p className="mt-2 text-sm font-medium text-gray-500">
           View feedback and suggestions for your guides
         </p>
-        <div className="mt-8">
+      </div>
+      <div className="mt-8">
           {isLoading && feedbacks.length === 0 ? (
             <div className="flex items-center justify-center py-12">
               <Loader2 className="h-8 w-8 animate-spin text-primary" />
@@ -90,7 +97,6 @@ export default function MemberFeedbackPage() {
               onPageChange={handlePageChange}
             />
           )}
-        </div>
       </div>
     </div>
   )

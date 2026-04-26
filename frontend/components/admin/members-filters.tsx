@@ -63,7 +63,7 @@ export function MembersFilters({
     currentStatus !== "all"
 
   return (
-    <div className="mb-6 space-y-4 rounded-lg border bg-card p-4">
+    <div className="mb-8 space-y-4 rounded-3xl border border-gray-100 bg-white p-6 shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
       {/* Search Input */}
       <div>
         <label className="mb-2 block text-sm font-medium">Search</label>

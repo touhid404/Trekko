@@ -66,11 +66,11 @@ export default function Modal({
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
     >
       <div
-        className={`relative w-full ${sizeClasses[size]} max-h-[90vh] overflow-y-auto rounded-lg bg-background shadow-lg`}
+        className={`relative w-full ${sizeClasses[size]} max-h-[90vh] overflow-y-auto rounded-3xl bg-white border border-gray-100 shadow-[0_20px_60px_rgba(0,0,0,0.1)]`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="sticky top-0 flex items-center justify-between border-b bg-background px-6 py-4">
+        <div className="sticky top-0 flex items-center justify-between border-b border-gray-100 bg-white/95 backdrop-blur-md px-6 py-4 z-10">
           <div>
             <h2 className="text-lg font-semibold">{title}</h2>
             {description && (

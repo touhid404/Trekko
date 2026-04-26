@@ -51,38 +51,26 @@ function StatCard({
   icon: React.ElementType
   color: string
 }) {
-  const gradientHint = color.split(" ")[0].replace("bg-", "from-").replace("/10", "")
-
   return (
-    <div className="glass-effect premium-shadow group relative overflow-hidden rounded-[2.5rem] p-8 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl">
-      {/* Ambient glow */}
-      <div
-        className={`absolute -right-12 -top-12 h-40 w-40 rounded-full bg-linear-to-br ${gradientHint} to-transparent opacity-5 blur-3xl transition-all duration-700 group-hover:scale-150 group-hover:opacity-20`}
-      />
-
+    <div className="glass-effect overflow-hidden rounded-3xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] bg-white border border-gray-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] group relative">
       <div className="relative z-10 flex items-center justify-between">
-        <div className="space-y-4">
-          <p className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-gray-400 transition-colors duration-300 group-hover:text-primary">
-            <span
-              className={`block h-1.5 w-1.5 rounded-full ${gradientHint.replace("from-", "bg-")} animate-pulse`}
-            />
+        <div className="space-y-3">
+          <p className="flex items-center gap-2 text-sm font-semibold text-gray-500 transition-colors duration-300 group-hover:text-gray-900">
             {title}
           </p>
-          <h3 className="text-5xl font-black tracking-tighter text-gray-900 transition-all duration-500 group-hover:translate-x-1 group-hover:text-primary">
+          <h3 className="text-4xl font-bold tracking-tight text-gray-900 transition-all duration-300">
             {value || 0}
           </h3>
         </div>
 
         {/* Minimal Icon Box */}
         <div
-          className={`relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 ${color.split(" ")[1]}`}
+          className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl transition-all duration-500 ${color.split(" ")[1]} ring-4 ring-gray-50`}
         >
-          <div className="absolute inset-0 rounded-2xl bg-white/40 ring-1 ring-white/20 backdrop-blur-sm" />
-          <Icon className="relative h-7 w-7 transition-transform duration-500 group-hover:scale-110" />
+          <Icon className="h-6 w-6 transition-transform duration-500 group-hover:scale-110" />
         </div>
       </div>
 
-      {/* Subtle decorative element */}
       <div className="absolute bottom-0 left-0 h-1 w-0 bg-primary/40 transition-all duration-700 ease-out group-hover:w-full" />
     </div>
   )

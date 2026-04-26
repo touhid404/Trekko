@@ -5,17 +5,18 @@ export default async function SubmissionsPage() {
   const initialData = await getUnderReview(1, 10)
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold">Submissions (Under Review)</h1>
-          <p className="mt-2 text-muted-foreground">
-            Track the status of your guides currently under review
-          </p>
-        </div>
+    <div className="mx-auto max-w-7xl">
+      <div className="mb-10">
+        <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-emerald-500">
+          Status
+        </span>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Submissions</h1>
+        <p className="mt-2 text-sm font-medium text-gray-500">
+          Track the status of your guides currently under review
+        </p>
+      </div>
 
         <UnderReviewList initialData={initialData} />
       </div>
-    </div>
   )
 }

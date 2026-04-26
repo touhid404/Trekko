@@ -42,51 +42,52 @@ export function StatsCharts({ stats }: StatsChartsProps) {
 
     return (
       <div className="grid gap-6 md:grid-cols-2">
-        <div className="glass-effect premium-shadow overflow-hidden rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-2xl">
-          <h3 className="mb-8 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
-            Platform <span className="text-primary italic">Intelligence</span>
-          </h3>
+        <div className="overflow-hidden rounded-3xl p-8 bg-white border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]">
+          <div className="mb-6">
+            <h3 className="text-lg font-bold tracking-tight text-gray-900">
+              Platform Intelligence
+            </h3>
+            <p className="text-sm font-medium text-gray-500">Distribution of platform resources</p>
+          </div>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
               <XAxis 
                 dataKey="name" 
-                tick={{ fill: "#94a3b8", fontSize: 10, fontWeight: 900 }} 
+                tick={{ fill: "#64748b", fontSize: 12, fontWeight: 600 }} 
                 axisLine={false} 
                 tickLine={false} 
                 dy={10}
               />
               <YAxis 
-                tick={{ fill: "#94a3b8", fontSize: 10, fontWeight: 900 }} 
+                tick={{ fill: "#64748b", fontSize: 12, fontWeight: 600 }} 
                 axisLine={false} 
                 tickLine={false} 
               />
               <Tooltip 
-                cursor={{ fill: "rgba(25, 137, 163, 0.05)" }} 
+                cursor={{ fill: "rgba(16, 185, 129, 0.05)" }} 
                 contentStyle={{ 
-                  borderRadius: "1.5rem", 
-                  border: "none", 
-                  background: "rgba(255, 255, 255, 0.8)",
-                  backdropFilter: "blur(8px)",
-                  boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)",
-                  padding: "1rem"
+                  borderRadius: "1rem", 
+                  border: "1px solid #f1f5f9", 
+                  background: "rgba(255, 255, 255, 0.95)",
+                  boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+                  padding: "0.75rem 1rem",
+                  fontWeight: 600,
+                  color: "#0f172a"
                 }} 
               />
-              <Bar dataKey="value" fill="url(#barGradient)" radius={[6, 6, 0, 0]} />
-              <defs>
-                <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#1989a3" />
-                  <stop offset="100%" stopColor="#1989a3" stopOpacity={0.6} />
-                </linearGradient>
-              </defs>
+              <Bar dataKey="value" fill="#10b981" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
-        <div className="glass-effect premium-shadow overflow-hidden rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-2xl">
-          <h3 className="mb-8 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
-            Ecosystem <span className="text-primary italic">Core</span>
-          </h3>
+        <div className="overflow-hidden rounded-3xl p-8 bg-white border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]">
+          <div className="mb-6">
+            <h3 className="text-lg font-bold tracking-tight text-gray-900">
+              Ecosystem Core
+            </h3>
+            <p className="text-sm font-medium text-gray-500">Breakdown of primary metrics</p>
+          </div>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
@@ -136,51 +137,52 @@ export function StatsCharts({ stats }: StatsChartsProps) {
 
   return (
     <div className="grid gap-6 md:grid-cols-2">
-      <div className="glass-effect premium-shadow overflow-hidden rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-2xl">
-        <h3 className="mb-8 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
-          Personal <span className="text-primary italic">Metrics</span>
-        </h3>
+      <div className="overflow-hidden rounded-3xl p-8 bg-white border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]">
+        <div className="mb-6">
+          <h3 className="text-lg font-bold tracking-tight text-gray-900">
+            Personal Metrics
+          </h3>
+          <p className="text-sm font-medium text-gray-500">Overview of your activity</p>
+        </div>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={data}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
             <XAxis 
               dataKey="name" 
-              tick={{ fill: "#94a3b8", fontSize: 10, fontWeight: 900 }} 
+              tick={{ fill: "#64748b", fontSize: 12, fontWeight: 600 }} 
               axisLine={false} 
               tickLine={false} 
               dy={10}
             />
             <YAxis 
-               tick={{ fill: "#94a3b8", fontSize: 10, fontWeight: 900 }} 
+               tick={{ fill: "#64748b", fontSize: 12, fontWeight: 600 }} 
                axisLine={false} 
                tickLine={false} 
             />
             <Tooltip 
-               cursor={{ fill: "rgba(25, 137, 163, 0.05)" }} 
+               cursor={{ fill: "rgba(16, 185, 129, 0.05)" }} 
                contentStyle={{ 
-                borderRadius: "1.5rem", 
-                border: "none", 
-                background: "rgba(255, 255, 255, 0.8)",
-                backdropFilter: "blur(8px)",
-                boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)",
-                padding: "1rem"
+                borderRadius: "1rem", 
+                border: "1px solid #f1f5f9", 
+                background: "rgba(255, 255, 255, 0.95)",
+                boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+                padding: "0.75rem 1rem",
+                fontWeight: 600,
+                color: "#0f172a"
               }} 
             />
-            <Bar dataKey="value" fill="url(#barGradientMember)" radius={[6, 6, 0, 0]} />
-            <defs>
-              <linearGradient id="barGradientMember" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#1989a3" />
-                <stop offset="100%" stopColor="#1989a3" stopOpacity={0.6} />
-              </linearGradient>
-            </defs>
+            <Bar dataKey="value" fill="#10b981" radius={[6, 6, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
-      <div className="glass-effect premium-shadow overflow-hidden rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-2xl">
-        <h3 className="mb-8 text-[11px] font-black uppercase tracking-[0.2em] text-gray-400">
-          Activity <span className="text-primary italic">Insight</span>
-        </h3>
+      <div className="overflow-hidden rounded-3xl p-8 bg-white border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)]">
+        <div className="mb-6">
+          <h3 className="text-lg font-bold tracking-tight text-gray-900">
+            Activity Insight
+          </h3>
+          <p className="text-sm font-medium text-gray-500">Distribution analysis</p>
+        </div>
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
             <Pie
@@ -193,7 +195,7 @@ export function StatsCharts({ stats }: StatsChartsProps) {
               }
               outerRadius={90}
               innerRadius={65}
-              fill="#1989a3"
+              fill="#10b981"
               dataKey="value"
               stroke="none"
             >
@@ -206,12 +208,13 @@ export function StatsCharts({ stats }: StatsChartsProps) {
             </Pie>
             <Tooltip 
                contentStyle={{ 
-                borderRadius: "1.5rem", 
-                border: "none", 
-                background: "rgba(255, 255, 255, 0.8)",
-                backdropFilter: "blur(8px)",
-                boxShadow: "0 20px 25px -5px rgb(0 0 0 / 0.1)",
-                padding: "1rem"
+                borderRadius: "1rem", 
+                border: "1px solid #f1f5f9", 
+                background: "rgba(255, 255, 255, 0.95)",
+                boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+                padding: "0.75rem 1rem",
+                fontWeight: 600,
+                color: "#0f172a"
               }} 
             />
           </PieChart>

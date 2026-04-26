@@ -1,9 +1,12 @@
 export default function FeedbackPage() {
   return (
-    <div className="min-h-screen bg-background">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold">Feedback Queue</h1>
-        <p className="mt-2 text-muted-foreground">
+    <div className="mx-auto max-w-7xl">
+      <div className="mb-10">
+        <span className="mb-2 inline-block text-xs font-bold uppercase tracking-widest text-emerald-500">
+          Moderation
+        </span>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Feedback Queue</h1>
+        <p className="mt-2 text-sm font-medium text-gray-500">
           Provide feedback for rejected guides and moderate content
         </p>
       </div>
