@@ -38,6 +38,11 @@ app.use("/api/auth", auth.handler);
 app.use("/api/v1", routes);
 
 
+app.get("/", (req, res) => {
+  res.send("Trekko Backend is running");
+});
+
+
 
 app.use(globalErrorHandler);
 app.use(notFound);

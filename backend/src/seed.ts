@@ -43,7 +43,6 @@ async function createUser(data: {
     return user;
 }
 
-// ─── Seed Data ─────────────────────────────────────────────────────────
 
 const CATEGORIES = [
     {
@@ -92,7 +91,7 @@ const USERS = [
     {
         name: "Admin Trekko",
         email: "admin@trekko.com",
-        password: "Admin@1234",
+        password: "12345678",
         role: MemberRole.ADMIN,
         bio: "Platform administrator at Trekko",
         address: "Dhaka, Bangladesh",
@@ -100,7 +99,7 @@ const USERS = [
     {
         name: "Sarah Mitchell",
         email: "sarah@example.com",
-        password: "Member@1234",
+        password: "12345678",
         role: MemberRole.MEMBER,
         bio: "Full-time traveler and adventure blogger sharing my journey.",
         address: "San Francisco, USA",
@@ -108,7 +107,7 @@ const USERS = [
     {
         name: "Rafiq Ahmed",
         email: "rafiq@example.com",
-        password: "Member@1234",
+        password: "12345678",
         role: MemberRole.MEMBER,
         bio: "Local tour guide passionate about Bangladesh's hidden beauty.",
         address: "Chittagong, Bangladesh",
@@ -116,7 +115,7 @@ const USERS = [
     {
         name: "Elena Rossi",
         email: "elena@example.com",
-        password: "Member@1234",
+        password: "12345678",
         role: MemberRole.MEMBER,
         bio: "Food and culture enthusiast traveling across Europe and Asia.",
         address: "Rome, Italy",
@@ -124,7 +123,7 @@ const USERS = [
     {
         name: "James Park",
         email: "james@example.com",
-        password: "Member@1234",
+        password: "12345678",
         role: MemberRole.MEMBER,
         bio: "Budget traveler and photography lover. 50+ countries explored!",
         address: "Seoul, South Korea",
